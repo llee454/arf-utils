@@ -507,8 +507,8 @@ ul.article_list {
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
     float: left;
     display: block;
-    margin-right: 2.35765%;
-    width: 23.23176%;
+    margin-right: 2.3576515979%;
+    width: 23.2317613015%;
     margin-bottom: 20px; }
     ul.article_list li:last-child {
       margin-right: 0; }
@@ -520,8 +520,8 @@ ul.article_list {
       ul.article_list li {
         float: left;
         display: block;
-        margin-right: 2.35765%;
-        width: 48.82117%; }
+        margin-right: 2.3576515979%;
+        width: 48.821174201%; }
         ul.article_list li:last-child {
           margin-right: 0; }
         ul.article_list li:nth-child(2n) {
@@ -532,7 +532,7 @@ ul.article_list {
       ul.article_list li {
         float: left;
         display: block;
-        margin-right: 2.35765%;
+        margin-right: 2.3576515979%;
         width: 100%; }
         ul.article_list li:last-child {
           margin-right: 0; } }
@@ -699,33 +699,33 @@ table.glossary tbody tr td:first-child {
     .leaf_nav {
       height: auto; } }
 
-.previous_lesson .menu_link {
+.previous_page .menu_link {
   background: url("images/previous-arrow.png") no-repeat 0px 50%;
   display: block;
   float: left;
   padding-left: 30px; }
-  .previous_lesson .menu_link:before {
+  .previous_page .menu_link:before {
     color: #b2b2b2;
-    content: "Previous Lesson";
+    content: "Previous";
     display: block; }
   @media screen and (max-width: 950px) {
-    .previous_lesson .menu_link {
+    .previous_page .menu_link {
       background: none;
       float: none;
       padding: 0px; } }
 
-.next_lesson .menu_link {
+.next_page .menu_link {
   background: url("images/next-arrow.png") no-repeat 100% 50%;
   display: block;
   float: right;
   padding-right: 30px;
   text-align: right; }
-  .next_lesson .menu_link:before {
+  .next_page .menu_link:before {
     color: #b2b2b2;
-    content: "Next Lesson";
+    content: "Next";
     display: block; }
   @media screen and (max-width: 950px) {
-    .next_lesson .menu_link {
+    .next_page .menu_link {
       background: none;
       float: none;
       padding: 10px 0px 0px 0px;
@@ -2471,23 +2471,23 @@ p {
   .two-column-grid-wide div, .two-column-grid-narrow div, .functionality-grid div {
     float: left;
     display: block;
-    margin-right: 2.35765%;
-    width: 48.82117%; }
+    margin-right: 2.3576515979%;
+    width: 48.821174201%; }
     .two-column-grid-wide div:last-child, .two-column-grid-narrow div:last-child, .functionality-grid div:last-child {
       margin-right: 0; }
     @media screen and (max-width: 950px) {
       .two-column-grid-wide div, .two-column-grid-narrow div, .functionality-grid div {
         float: left;
         display: block;
-        margin-right: 2.35765%;
+        margin-right: 2.3576515979%;
         width: 100%; }
         .two-column-grid-wide div:last-child, .two-column-grid-narrow div:last-child, .functionality-grid div:last-child {
           margin-right: 0; } }
   .two-column-grid-wide div:nth-child(even), .two-column-grid-narrow div:nth-child(even), .functionality-grid div:nth-child(even) {
     float: left;
     display: block;
-    margin-right: 2.35765%;
-    width: 48.82117%;
+    margin-right: 2.3576515979%;
+    width: 48.821174201%;
     margin-right: 0; }
     .two-column-grid-wide div:nth-child(even):last-child, .two-column-grid-narrow div:nth-child(even):last-child, .functionality-grid div:nth-child(even):last-child {
       margin-right: 0; }
@@ -2495,7 +2495,7 @@ p {
       .two-column-grid-wide div:nth-child(even), .two-column-grid-narrow div:nth-child(even), .functionality-grid div:nth-child(even) {
         float: left;
         display: block;
-        margin-right: 2.35765%;
+        margin-right: 2.3576515979%;
         width: 100%; }
         .two-column-grid-wide div:nth-child(even):last-child, .two-column-grid-narrow div:nth-child(even):last-child, .functionality-grid div:nth-child(even):last-child {
           margin-right: 0; } }
@@ -2503,9 +2503,9 @@ p {
 .two-column-grid-narrow div {
   float: left;
   display: block;
-  margin-right: 2.35765%;
-  width: 31.76157%;
-  margin-left: 17.05961%;
+  margin-right: 2.3576515979%;
+  width: 31.7615656014%;
+  margin-left: 17.0596085997%;
   text-align: left; }
   .two-column-grid-narrow div:last-child {
     margin-right: 0; }
@@ -2514,7 +2514,7 @@ p {
       margin-left: 0%;
       float: left;
       display: block;
-      margin-right: 2.35765%;
+      margin-right: 2.3576515979%;
       width: 100%; }
       .two-column-grid-narrow div:last-child {
         margin-right: 0; } }
@@ -2522,8 +2522,8 @@ p {
   margin-left: 0%;
   float: left;
   display: block;
-  margin-right: 2.35765%;
-  width: 31.76157%;
+  margin-right: 2.3576515979%;
+  width: 31.7615656014%;
   text-align: left;
   margin-bottom: 20px; }
   .two-column-grid-narrow div:nth-child(even):last-child {
@@ -2533,7 +2533,7 @@ p {
       margin-left: 0%;
       float: left;
       display: block;
-      margin-right: 2.35765%;
+      margin-right: 2.3576515979%;
       width: 100%; }
       .two-column-grid-narrow div:nth-child(even):last-child {
         margin-right: 0; } }
@@ -2542,9 +2542,9 @@ p {
 .functionality-grid div {
   float: left;
   display: block;
-  margin-right: 2.35765%;
-  width: 31.76157%;
-  margin-left: 17.05961%;
+  margin-right: 2.3576515979%;
+  width: 31.7615656014%;
+  margin-left: 17.0596085997%;
   text-align: right; }
   .functionality-grid div:last-child {
     margin-right: 0; }
@@ -2554,7 +2554,7 @@ p {
       margin-left: 0%;
       float: left;
       display: block;
-      margin-right: 2.35765%;
+      margin-right: 2.3576515979%;
       width: 100%; }
       .functionality-grid div:last-child {
         margin-right: 0; } }
@@ -2562,8 +2562,8 @@ p {
   margin-left: 0%;
   float: left;
   display: block;
-  margin-right: 2.35765%;
-  width: 31.76157%;
+  margin-right: 2.3576515979%;
+  width: 31.7615656014%;
   text-align: left;
   margin-bottom: 20px; }
   .functionality-grid div:nth-child(even):last-child {
@@ -2574,7 +2574,7 @@ p {
       margin-left: 0%;
       float: left;
       display: block;
-      margin-right: 2.35765%;
+      margin-right: 2.3576515979%;
       width: 100%; }
       .functionality-grid div:nth-child(even):last-child {
         margin-right: 0; } }

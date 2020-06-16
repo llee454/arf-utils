@@ -152,7 +152,7 @@ table.glossary {
   }
 }
 
-.previous_lesson {
+.previous_page {
   .menu_link {
     background: url('images/previous-arrow.png') no-repeat 0px 50%;
     display: block;
@@ -161,7 +161,7 @@ table.glossary {
 
     &:before {
       color: $dark_gray;
-      content: "Previous Lesson";
+      content: "Previous";
       display: block;
     }
 
@@ -173,7 +173,7 @@ table.glossary {
   }
 }
 
-.next_lesson {
+.next_page {
   .menu_link {
     background: url('images/next-arrow.png') no-repeat 100% 50%;
     display: block;
@@ -183,7 +183,7 @@ table.glossary {
 
     &:before {
       color: $dark_gray;
-      content: "Next Lesson";
+      content: "Next";
       display: block;
     }
 
