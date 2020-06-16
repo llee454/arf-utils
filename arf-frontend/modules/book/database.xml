@@ -22,6 +22,10 @@
         <title><![CDATA[Nutrition]]></title>
         <body><![CDATA[
           <div class="section-content">
+            <p>
+               Enter the number of calories in your meal.<br>
+            </p>
+            <div class='main_record_meal_block'></div>
           </div>
         ]]></body>
         <searchable>false</searchable>

@@ -8,7 +8,8 @@ MODULE_LOAD_HANDLERS.add (
   function (done) {
 
   block_HANDLERS.addHandlers ({
-    'main_prolog_query_block': main_prologQueryBlock
+    'main_prolog_query_block': main_prologQueryBlock,
+    'main_record_meal_block': main_recordMealBlock
   });
 
   // I. Display/hide the Back to Top tab.
@@ -54,11 +55,37 @@ function main_prologQueryBlock (context, done) {
       .text ('Send')
       .click (function () {
           var url = 'http://arf.larrylee.tech:5000/run?command=' + $('#prolog-query-input').val ()
-          alert ('sending query: ' + url);
           $.get (url,
             function (content) {
-              alert ('response: ' + content);
               $('#prolog-query-response').text (content)
+            }, 'text').fail (function () {
+              alert ('failed');
+            });
+        }))
+   .append ($('<div></div>')
+     .text ('Response:')
+     .append(responseElement));
+
+  done (null);
+}
+
+function main_recordMealBlock (context, done) {
+  var inputElement = $('<input></input>')
+    .attr ('id', 'prolog-meal-calories-input')
+    .attr ('type', 'text');
+
+  var responseElement = $('<div></div>').attr ('id', 'prolog-meal-response');
+
+  $(context.element)
+    .append (inputElement)
+    .append ($('<button></button>')
+      .attr ('id', 'prolog-meal-send')
+      .text ('Send')
+      .click (function () {
+          var url = 'http://arf.larrylee.tech:5000/meal?calories=' + $('#prolog-meal-calories-input').val ()
+          $.get (url,
+            function (content) {
+              $('#prolog-meal-response').text (content)
             }, 'text').fail (function () {
               alert ('failed');
             });
