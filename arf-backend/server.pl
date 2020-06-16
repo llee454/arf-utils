@@ -1,15 +1,15 @@
 /*
-  This program defines a server application that
-  accepts prolog facts from a Semantic MediaWiki
-  instance, stores them in a prolog database
-  file, and answers queries against the database.
+  This program defines a server application that accepts prolog
+  facts from a Semantic MediaWiki instance, stores them in a prolog
+  database file, and answers queries against the database.
 
   to start this application run:
 
-  $ swipl kono.pl
-  $ > server(5000).
+  $ swipl kono.pl --port 5000
 
-  Then connect to port 5000.
+  Use `netstat -tulpn` to verify that the server started and
+  connected to port 5000. Then connect to port 5000 using your
+  browser.
 
   Examples:
   http://localhost:5000/status?
@@ -20,6 +20,8 @@
 */
 
 % load the library dependencies to define a server.
+:- use_module(library(http/http_unix_daemon)).
+
 :- use_module(library(http/thread_httpd)).
 :- use_module(library(http/http_dispatch)).
 :- use_module(library(http/http_parameters)).
@@ -33,16 +35,12 @@
 
 % load database modules.
 :- use_module(nutrition).
-
 :- nutrition:attachNutritionDB("NutritionDB.pl").
 
 % define the routing table.
 :- http_handler(root(status), statusHandler, []).
 :- http_handler(root(run), runHandler, []).
 :- http_handler(root(meal), mealHandler, []).
-
-% define the start command.
-server(Port) :- http_server(http_dispatch, [port(Port)]).
 
 % process status requests.
 statusHandler(_Request)
@@ -66,3 +64,11 @@ mealHandler(Request) :-
   get_time(Date),
   nutrition:recordMeal(0, Date, Calories),
   format('Meal Recorded').
+
+% start the server.
+% specify the initialization code (http_daemon) and call
+% http_server with the router (http_dispatch)
+:- initialization(http_daemon, main).
+
+main :-
+  http_server(http_dispatch).
