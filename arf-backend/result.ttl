@@ -1,0 +1,36 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix swivt: <http://semantic-mediawiki.org/swivt/1.0#> .
+@prefix wiki: <http://wiki.sifive.parallel-threads.com/index.php/Special:URIResolver/> .
+@prefix category: <http://wiki.sifive.parallel-threads.com/index.php/Special:URIResolver/Category-3A> .
+@prefix property: <http://wiki.sifive.parallel-threads.com/index.php/Special:URIResolver/Property-3A> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix wikiurl: <http://wiki.sifive.parallel-threads.com/index.php/> .
+
+[	rdf:type  owl:Ontology ;
+ 	swivt:creationDate  "2018-10-11T00:24:54+00:00"^^xsd:dateTime ;
+ 	owl:imports  <http://semantic-mediawiki.org/swivt/1.0> ]
+
+wiki:Donelle_Lee
+ 	rdf:type  swivt:Subject ;
+ 	rdfs:label  "Donelle Lee" ;
+ 	rdfs:isDefinedBy  <http://wiki.sifive.parallel-threads.com/index.php/Special:ExportRDF/Donelle_Lee> ;
+ 	swivt:page  <http://wiki.sifive.parallel-threads.com/index.php/Donelle_Lee> ;
+ 	swivt:wikiNamespace  "0"^^xsd:integer ;
+ 	swivt:wikiPageContentLanguage  "en" .
+
+wiki:Larry_Lee
+ 	rdf:type  swivt:Subject ;
+ 	rdfs:label  "Larry Lee" ;
+ 	rdfs:isDefinedBy  <http://wiki.sifive.parallel-threads.com/index.php/Special:ExportRDF/Larry_Lee> ;
+ 	swivt:page  <http://wiki.sifive.parallel-threads.com/index.php/Larry_Lee> ;
+ 	swivt:wikiNamespace  "0"^^xsd:integer ;
+ 	swivt:wikiPageContentLanguage  "en" .
+
+<http://semantic-mediawiki.org/swivt/1.0#creationDate> rdf:type owl:DatatypeProperty .
+<http://semantic-mediawiki.org/swivt/1.0#page> rdf:type owl:ObjectProperty .
+<http://semantic-mediawiki.org/swivt/1.0#wikiNamespace> rdf:type owl:DatatypeProperty .
+<http://semantic-mediawiki.org/swivt/1.0#wikiPageContentLanguage> rdf:type owl:DatatypeProperty .
+
+# Created by Semantic MediaWiki, https://www.semantic-mediawiki.org/

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<database>
+  <entry>
+    <id>degree</id>
+    <title>Degree</title>
+    <keywords>degree college BA BS master phd</keywords>
+    <url></url>
+    <body><![CDATA[B.A., Goucher College, 2008]]></body>
+  </entry>
+</database>

@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<database>
+  <entry>
+    <id>contact</id>
+    <title>Contact</title>
+    <keywords>name contact information email address phone number</keywords>
+    <url>mailto://llee454@gmail.com</url>
+    <body>
+      <p>Larry Darryl Lee Jr. llee454@gmail.com (410) 961 3395</p>
+    </body>
+  </entry>
+  <entry>
+    <id>degree</id>
+    <title>Degree</title>
+    <keywords>education degree college school university BA BS master phd</keywords>
+    <url></url>
+    <body>
+      <p>B.A., Goucher College, 2008</p>
+    </body>
+  </entry>
+  <entry>
+    <id>github</id>
+    <title>GitHub</title>
+    <keywords>contact information code samples work examples</keywords>
+    <url>https://github.com/llee454</url>
+    <body>
+      <p>https://github.com/llee454</p>
+    </body>
+  </entry>
+  <entry>
+    <id>linkedin</id>
+    <title>LinkedIn</title>
+    <keywords>linked in linkedin contact information code samples work examples</keywords>
+    <url>linkedin.com/in/larry-lee-1a4944135/</url>
+    <body>
+      <p>linkedin.com/in/larry-lee-1a4944135/</p>
+    </body>
+  </entry>
+  <entry>
+    <id>researchgate</id>
+    <title>ResearchGate</title>
+    <keywords>samples writing research reports</keywords>
+    <url>https://www.researchgate.net/profile/Larry_Lee14/publications</url>
+    <body><![CDATA[
+      <p>
+        Reports I've written on System Architectures, bug discovery, and the software development process generally:<br/>
+        https://www.researchgate.net/profile/Larry_Lee14/publications
+      <p>
+    ]]></body>
+  </entry>
+  <entry>
+    <id>resume</id>
+    <title>Resume</title>
+    <keywords>resume cv</keywords>
+    <url>data/resume with cover letter.pdf</url>
+    <body>
+      <p>larrylee.tech/data/resume with cover letter.pdf</p>
+    </body>
+  </entry>
+  <entry>
+    <id>travel</id>
+    <title>Travel/Relocation</title>
+    <keywords>travel relocation remote telework</keywords>
+    <url></url>
+    <body>
+      <p>When I joined SiFive, I relocated to San Mateo for two months to integrate with the SiFive team before transitioning to remote work. I am open to exploring similar arrangements involving temporary relocation, commuting, and remote collaboration with your team.</p>
+    </body>
+  </entry>
+  <entry>
+    <id>performance</id>
+    <title>Performance</title>
+    <keywords>performance stress deadlines pressure</keywords>
+    <url></url>
+    <body>
+      <p>As my endorsements and portfolio demonstrate, I have successfully delivered results under demanding conditions. I have achieved these successes by being methodical, systematic, and disciplined. I've adapted ideas from several process improvement frameworks (such as CMMI) to develop a personal framework that I employ.</p>
+    </body>
+  </entry>
+  <entry>
+    <id>interests</id>
+    <title>Interests</title>
+    <keywords>passion interests interest</keywords>
+    <url></url>
+    <body>
+      <p>My primary interest lies in applying formal methods to create trustworthy systems for vital applications. I believe that technology should empower people, and focused on open source projects throughout my career. This focus on open source reliable technology can be seen in my work on the Kami Processor project, my development of Lucidity, and my contributions to the Knowledge for Health project at Johns Hopkins University.</p>
+    </body>
+  </entry>
+  <entry>
+    <id>agile</id>
+    <title>Methodology</title>
+    <keywords>agile methodology scrum</keywords>
+    <url></url>
+    <body>
+      <p>While at Elucid Solutions, I was instrumental in attaining CMMI (v1.3) level 3 certification. This involved instituting a formal development methodology for the company and generally systematizing our software development practice. I successfully advocated for Scrum, and subsequently advised other organizations on Agile development using Scrum.</p>
+    </body>
+  </entry>
+  <entry>
+    <id>leadership</id>
+    <title>Leadership</title>
+    <keywords>leadership management lead team</keywords>
+    <url></url>
+    <body>
+      <p>At Elucid, I served as the technical team lead for several projects. During that time, I defined tasks and schedules, and oversaw developers. I adopted a structured management approach based around a combination of the CMMI process improvement framework and Scrum to define projects, identify tasks, track performance, and provide feedback. I emphasized transparency, communication, and empiricism while managing teams, and successfully maintained high morale while attaining production goals.</p>
+    </body>
+  </entry>
+  <entry>
+    <id>remote</id>
+    <title>Working on Distributed Teams</title>
+    <keywords>remote telework distributed relocate office travel</keywords>
+    <url></url>
+    <body>
+      <p>In my 2019 annual review, Murali Vijayaraghavan wrote: "[Larry Lee] has been an example of successful remote collaboration." While working for SiFive, I took the initiative and rented an office at my own expense, established protocols for ensuring a timely response to all messages, and leveraged task tracking tools to provide full transparency into my daily activities. Using these methods, I ensured that I was able to collaborate seamlessly with the rest of the SiFive team, as attested by my supervisor's report.</p>
+    </body>
+  </entry>
+  <entry>
+    <id>collaboration</id>
+    <title>Collaboration</title>
+    <keywords>team player together partner mentor</keywords>
+    <url></url>
+    <body>
+      <p>Throughout my career, I've collaborated with teams of engineers to deliver quality software. Whether as a team lead, or a developer on a team, I have established a track record of strong communication, robust morale, and technical competence. I believe that effective collaboration starts with communication and structured methodology. My code samples attests to my use of consistent documentation; my success attaining CMMI certification for Elucid Solutions demonstrates my commitment to structured methodology; and my endorsements speak to my effective communication.</p>
+    </body>
+  </entry>
+  <entry>
+    <id>lead</id>
+    <title>Lead Time</title>
+    <keywords>available start date availability</keywords>
+    <url></url>
+    <body>
+      <p>2 weeks</p>
+    </body>
+  </entry>
+  
+    <entry>
+      <id>coq</id>
+      <title>Coq</title>
+      <keywords>coq formal verification methods theorem proving gallina ltac</keywords>
+      <url></url>
+      <body><![CDATA[
+        <p>
+          Level: Professional<br/>
+          Summary: Used to formally verify algorithms developed for SiFive, contributed to the Coq Standard Library, and released packages on the Coq Package Index.
+        </p>
+      ]]></body>
+    </entry>
+    <entry>
+      <id>riscv</id>
+      <title>RISC-V</title>
+      <keywords>riscv hardware computer processor assembly formal verification methods theorem proving</keywords>
+      <url></url>
+      <body><![CDATA[
+        <p>
+          Level: Professional<br/>
+          Summary: Developed Kami Processor, an open source RISC-V processor. Formalized the RISC-V specification. Thoroughly knowledgeable about the RISC-V specification.
+        </p>
+      ]]></body>
+    </entry>
+    <entry>
+      <id>drupal</id>
+      <title>Drupal</title>
+      <keywords>web development drupal cms content management system</keywords>
+      <url></url>
+      <body><![CDATA[
+        <p>
+          Level: Professional<br/>
+          Summary: Over 10 years of professional experience developing Drupal websites and modules. I have developed websites using Drupal 6, 7, and 8, for a variety of clients including Johns Hopkins University.
+        </p>
+      ]]></body>
+    </entry>
+    <entry>
+      <id>gallina</id>
+      <title>Gallina and Ltac</title>
+      <keywords>coq formal verification methods theorem proving agda isabelle hol programming language</keywords>
+      <url></url>
+      <body><![CDATA[
+        <p>
+          Level: Fluent<br/>
+          Summary: Used to formally verify algorithms developed for SiFive, contributed to the Coq Standard Library, and released packages on the Coq Package Index.
+        </p>
+      ]]></body>
+    </entry>
+    <entry>
+      <id>haskell</id>
+      <title>Haskell</title>
+      <keywords>functional lazy programming language</keywords>
+      <url></url>
+      <body><![CDATA[
+        <p>
+          Level: Fluent<br/>
+          Summary: Used to model peripheral devices while developing the Kami Processor at SiFive. I have experience debugging, profiling, and optimizing Haskell programs using GHC's analysis toolchain.
+        </p>
+      ]]></body>
+    </entry>
+    <entry>
+      <id>js</id>
+      <title>JavaScript</title>
+      <keywords>web nodejs node programming language</keywords>
+      <url></url>
+      <body><![CDATA[
+        <p>
+          Level: Fluent<br/>
+          Summary: Developed a JavaScript framework similar to REACT-JS. Professional experience developing NodeJS based applications, and integrating REACT-JS with Drupal's theme system.
+        </p>
+      ]]></body>
+    </entry>
+    <entry>
+      <id>solidity</id>
+      <title>Solidity</title>
+      <keywords>blockchain block chain crypto programming language</keywords>
+      <url></url>
+      <body><![CDATA[
+        <p>
+          Level: Familiar<br/>
+          Summary: Have Read the Solidity language specification.
+        </p>
+      ]]></body>
+    </entry>
+    <entry>
+      <id>sass</id>
+      <title>Sass</title>
+      <keywords>web html xml css drupal php programming language</keywords>
+      <url></url>
+      <body><![CDATA[
+        <p>
+          Level: Fluent<br/>
+          Summary: Extensive professional experience using Sass
+        </p>
+      ]]></body>
+    </entry>
+    <entry>
+      <id>css</id>
+      <title>CSS</title>
+      <keywords>web html xml css drupal php programming language</keywords>
+      <url></url>
+      <body><![CDATA[
+        <p>
+          Level: Fluent<br/>
+          Summary: Extensive professional experience using CSS
+        </p>
+      ]]></body>
+    </entry>
+    <entry>
+      <id>html</id>
+      <title>HTML</title>
+      <keywords>web html xml css drupal php programming language</keywords>
+      <url></url>
+      <body><![CDATA[
+        <p>
+          Level: Fluent<br/>
+          Summary: Extensive professional experience using HTML
+        </p>
+      ]]></body>
+    </entry>
+    <entry>
+      <id>xml</id>
+      <title>XML</title>
+      <keywords>web html xml css drupal php programming language</keywords>
+      <url></url>
+      <body><![CDATA[
+        <p>
+          Level: Fluent<br/>
+          Summary: Extensive professional experience using XML
+        </p>
+      ]]></body>
+    </entry>
+    <entry>
+      <id>php</id>
+      <title>PHP</title>
+      <keywords>web html xml css drupal php programming language</keywords>
+      <url></url>
+      <body><![CDATA[
+        <p>
+          Level: Fluent<br/>
+          Summary: Over 10 years of experience developing Drupal based websites and modules. Drupal's back-end is written in PHP.
+        </p>
+      ]]></body>
+    </entry>
+    <entry>
+      <id>scheme</id>
+      <title>Scheme</title>
+      <keywords>functional lisp clojure programming language</keywords>
+      <url></url>
+      <body><![CDATA[
+        <p>
+          Level: Familiar<br/>
+          Summary: Have read the R6RS and R7RS specifications and used Scheme on several informal projects.
+        </p>
+      ]]></body>
+    </entry>
+    <entry>
+      <id>ocaml</id>
+      <title>OCaml</title>
+      <keywords>functional programming language</keywords>
+      <url></url>
+      <body><![CDATA[
+        <p>
+          Level: Familiar<br/>
+          Summary: Coursework included the ML variant SML. I am familiar with OCaml primarily through my interactions with Coq, which is written in OCaml. Additionally, I have read the OCaml language Specification.
+        </p>
+      ]]></body>
+    </entry>
+    <entry>
+      <id>bluespec</id>
+      <title>BlueSpec</title>
+      <keywords>hardware programming language</keywords>
+      <url></url>
+      <body><![CDATA[
+        <p>
+          Level: Familiar<br/>
+          Summary: Developed a RISC-V processor in Kami, a hardware modeling language whose syntax is heavily influenced by BlueSpec. Both languages share the same semantic concepts such as rules, actions, and expressions. Accordingly, I should be able to effectively acquire BlueSpec.
+        </p>
+      ]]></body>
+    </entry>
+    <entry>
+      <id>kami</id>
+      <title>Kami</title>
+      <keywords>hardware programming language</keywords>
+      <url></url>
+      <body><![CDATA[
+        <p>
+          Level: Fluent<br/>
+          Summary: Kami is a hardware modeling language embedded in Coq. It's syntax and semantics borrow heavily from BlueSpec. I am fully fluent in Kami and contributed to the Kami language project in addition to developing formally verified hardware designs in it.
+        </p>
+      ]]></body>
+    </entry>
+    <entry>
+      <id>sifive</id>
+      <title>SiFive</title>
+      <keywords>work history employer company companies</keywords>
+      <url></url>
+      <body><![CDATA[
+        <p>
+          Years: 2018 - 2020<br/>
+          Position: Sr. Engineer<br/>
+          Summary: Developed an open source RISC-V processor, used Coq to formally verify components used within SiFive's S-series processors, and contributed to the development of Kami, a hardware modeling language embedded within Coq.
+        </p>
+      ]]></body>
+    </entry>
+    <entry>
+      <id>elucid</id>
+      <title>Elucid Solutions</title>
+      <keywords>work history employer company companies</keywords>
+      <url></url>
+      <body><![CDATA[
+        <p>
+          Years: 2015 - 2018<br/>
+          Position: Sr. Programmer Analyst<br/>
+          Summary: Developed several websites using Drupal for several government agencies. Attained the highest Contractor Performance Assessment Reporting System (CPARS) rating, including "exceptional" ratings for "quality," "schedule," and "management," for my work developing achp.gov. Was instrumental in helping Elucid Solutions attain a CMMI (v1.3) level 3 certification.
+        </p>
+      ]]></body>
+    </entry>
+    <entry>
+      <id>jhu</id>
+      <title>Johns Hopkins University</title>
+      <keywords>work history employer company companies</keywords>
+      <url></url>
+      <body><![CDATA[
+        <p>
+          Years: 2015 - 2009<br/>
+          Position: Sr. Programmer Analyst<br/>
+          Summary: Drupal developer for several high profile websites including Popline, the largest online database of scientific research articles concerning reproductive health; and mHealth Evidence, an online database of scholarly journal articles related to mobile health interventions.
+        </p>
+      ]]></body>
+    </entry>
+</database>

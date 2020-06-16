@@ -1,0 +1,38 @@
+Kono Project
+============
+
+Introduction
+------------
+
+The Kono project is an experimental project to link content stored within a Semantic MediaWiki instance with SWI Prolog through JavaScript.
+
+Kono is designed to receive facts from a Semantic MediaWiki instance and add them to a prolog database.
+Kono can then execute prolog commands against this database and an optional model file that contains inference rules.
+The result is a complex inference engine that derives results using knowledge contained within a wiki.
+
+Components
+----------
+
+### Semantic MediaWiki
+
+MediaWiki is a wiki application that can be used to store information as articles. MediaWiki allows users to organize entries into categories and namespaces. These categories can be nested to form category hierarchies.
+
+The Semantic MediaWiki extension, allows users to associate metadata with MediaWiki entries. These metadata values are called properties. Semantic media wiki defines WikiText templates that generate tables and lists. These templates accept filter and sort criteria that can be used to select the entries displayed within these tables.
+
+Additionally, the extension provides a JavaScript API that can be used to list those entries that satisfy property and category constraints.
+
+### Kono
+
+Kono is a server that exposes SWI prolog. JavaScript applications can execute Prolog commands using this server application.
+
+Kono provides two endpoints:
+
+* kono?save=FACT
+  where FACT is a urlencoded Prolog fact such as "task?(task("Return Library Book Task"))."  
+
+* kono?resolve=TERM
+  where TERM is a urlencoded Prolog term such as "findall(X, event?(X), event_scheduled_start(X,"Oct 9 2018"), Xs), write(Xs)."
+  
+### JavaScript
+
+
