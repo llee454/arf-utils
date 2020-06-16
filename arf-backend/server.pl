@@ -38,8 +38,8 @@
 % load database modules.
 :- use_module(nutrition).
 :- use_module(base).
-:- base:attachBaseDB("baseDB.pl").
-:- nutrition:attachNutritionDB("NutritionDB.pl").
+:- base:attachBaseDB("databases/base.pl").
+:- nutrition:attachNutritionDB("databases/nutritionDB.pl").
 
 % define the routing table.
 :- http_handler(root(status), statusHandler, []).

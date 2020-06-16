@@ -129,6 +129,11 @@ $hero-height: 100vh;
 input, button {
   width: 100%;
 }
+.meal-form {
+  input {
+    margin-bottom: 20px;
+  }
+}
 .light-section {
   .section-content {
     background-color: white;

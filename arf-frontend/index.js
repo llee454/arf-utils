@@ -71,19 +71,102 @@ function main_prologQueryBlock (context, done) {
 }
 
 function main_recordMealBlock (context, done) {
-  var inputElement = $('<input></input>')
-    .attr ('id', 'prolog-meal-calories-input')
-    .attr ('type', 'text');
 
   var responseElement = $('<div></div>').attr ('id', 'prolog-meal-response');
 
   $(context.element)
-    .append (inputElement)
+    .addClass ('meal-form')
+    .append ($('<label></label>')
+      .attr ('for', 'calories')
+      .text ('Calories:'))
+    .append ($('<input></input>')
+      .attr ('id', 'prolog-meal-calories-input')
+      .attr ('name', 'calories')
+      .attr ('value', '0')
+      .attr ('type', 'text'))
+
+    .append ($('<label></label>')
+      .attr ('for', 'grain')
+      .text ('Grain servings:'))
+    .append ($('<input></input>')
+      .attr ('id', 'prolog-meal-grain-input')
+      .attr ('name', 'grain')
+      .attr ('value', '0')
+      .attr ('type', 'text'))
+
+    .append ($('<label></label>')
+      .attr ('for', 'vegetables')
+      .text ('Vegetable servings:'))
+    .append ($('<input></input>')
+      .attr ('id', 'prolog-meal-vegetables-input')
+      .attr ('name', 'dairy')
+      .attr ('value', '0')
+      .attr ('type', 'text'))
+
+    .append ($('<label></label>')
+      .attr ('for', 'fruit')
+      .text ('Fruit servings:'))
+    .append ($('<input></input>')
+      .attr ('id', 'prolog-meal-fruit-input')
+      .attr ('name', 'fruit')
+      .attr ('value', '0')
+      .attr ('type', 'text'))
+
+    .append ($('<label></label>')
+      .attr ('for', 'dairy')
+      .text ('Dairy servings:'))
+    .append ($('<input></input>')
+      .attr ('id', 'prolog-meal-dairy-input')
+      .attr ('name', 'dairy')
+      .attr ('value', '0')
+      .attr ('type', 'text'))
+
+    .append ($('<label></label>')
+      .attr ('for', 'meat')
+      .text ('Meat servings:'))
+    .append ($('<input></input>')
+      .attr ('id', 'prolog-meal-meat-input')
+      .attr ('name', 'meat')
+      .attr ('value', '0')
+      .attr ('type', 'text'))
+
+    .append ($('<label></label>')
+      .attr ('for', 'nuts')
+      .text ('Nuts servings:'))
+    .append ($('<input></input>')
+      .attr ('id', 'prolog-meal-nuts-input')
+      .attr ('name', 'nuts')
+      .attr ('value', '0')
+      .attr ('type', 'text'))
+
+    .append ($('<label></label>')
+      .attr ('for', 'nuts')
+      .text ('Sugar servings:'))
+    .append ($('<input></input>')
+      .attr ('id', 'prolog-meal-sugar-input')
+      .attr ('name', 'sugar')
+      .attr ('value', '0')
+      .attr ('type', 'text'))
+
     .append ($('<button></button>')
       .attr ('id', 'prolog-meal-send')
       .text ('Send')
       .click (function () {
-          var url = 'https://arf.larrylee.tech:5000/run?command=nutrition:mealCreate(' + $('#prolog-meal-calories-input').val () + ', [serving(grain, 6)], _).';
+          var servingsString = [
+              'prolog-meal-grain-input',
+              'prolog-meal-vegetables-input',
+              'prolog-meal-fruit-input',
+              'prolog-meal-dairy-input',
+              'prolog-meal-meat-input',
+              'prolog-meal-nuts-input',
+              'prolog-meal-sugar-input'
+            ].map (function (id) {
+              var value = $('#' + id).val ();
+              var label = $('#' + id).attr ('name');
+              return 'serving(' + label + ', ' + value + ')';
+            }).join (', ');
+
+          var url = 'https://arf.larrylee.tech:5000/run?command=nutrition:mealCreate(' + $('#prolog-meal-calories-input').val () + ', [' + servingsString + '], _).';
           alert (url);
           $.get (url,
             function (content) {
