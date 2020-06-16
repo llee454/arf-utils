@@ -105,6 +105,9 @@ $hero-height: 100vh;
   text-align: center;
   width: 100%;
 }
+#body {
+  overflow: hidden;
+}
 #main-content {
   background-color: rgb(250,250,255);
 }

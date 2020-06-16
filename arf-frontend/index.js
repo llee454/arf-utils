@@ -54,7 +54,8 @@ function main_prologQueryBlock (context, done) {
       .attr ('id', 'prolog-query-send')
       .text ('Send')
       .click (function () {
-          var url = 'http://arf.larrylee.tech:5000/run?command=' + $('#prolog-query-input').val ()
+          var url = 'https://arf.larrylee.tech:5000/run?command=' + $('#prolog-query-input').val ()
+          alert (url);
           $.get (url,
             function (content) {
               $('#prolog-query-response').text (content)
@@ -82,7 +83,8 @@ function main_recordMealBlock (context, done) {
       .attr ('id', 'prolog-meal-send')
       .text ('Send')
       .click (function () {
-          var url = 'http://arf.larrylee.tech:5000/meal?calories=' + $('#prolog-meal-calories-input').val ()
+          var url = 'https://arf.larrylee.tech:5000/run?command=nutrition:mealCreate(' + $('#prolog-meal-calories-input').val () + ', [serving(grain, 6)], _).';
+          alert (url);
           $.get (url,
             function (content) {
               $('#prolog-meal-response').text (content)

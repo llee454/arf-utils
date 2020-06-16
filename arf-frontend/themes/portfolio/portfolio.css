@@ -2654,6 +2654,9 @@ table.padded-list tbody tr td {
   text-align: center;
   width: 100%; }
 
+#body {
+  overflow: hidden; }
+
 #main-content {
   background-color: #fafaff; }
 

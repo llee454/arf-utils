@@ -5,7 +5,9 @@
 
   to start this application run:
 
-  $ swipl kono.pl --port 5000
+  $ swipl server.pl --port=5000 --https=true \
+      --certfile="/etc/letsencrypt/live/arf.larrylee.tech/fullchain.pem" \
+      --keyfile="/etc/letsencrypt/live/arf.larrylee.tech/privkey.pem"
 
   Use `netstat -tulpn` to verify that the server started and
   connected to port 5000. Then connect to port 5000 using your
@@ -35,6 +37,8 @@
 
 % load database modules.
 :- use_module(nutrition).
+:- use_module(base).
+:- base:attachBaseDB("baseDB.pl").
 :- nutrition:attachNutritionDB("NutritionDB.pl").
 
 % define the routing table.
@@ -54,16 +58,8 @@ runHandler(Request) :-
   format('Access-Control-Allow-Origin: *~n'),
   format('Content-type: text/plain~n~n'),
   term_string(Command, CommandString),
-  call(Command).
-
-mealHandler(Request) :-
-  http_parameters(Request, [calories(CaloriesAtom, [])]),
-  format('Access-Control-Allow-Origin: *~n'),
-  format('Content-type: text/plain~n~n'),
-  atom_number(CaloriesAtom, Calories),
-  get_time(Date),
-  nutrition:recordMeal(0, Date, Calories),
-  format('Meal Recorded').
+  call(Command),
+  format('Done').
 
 % start the server.
 % specify the initialization code (http_daemon) and call

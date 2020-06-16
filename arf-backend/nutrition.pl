@@ -10,7 +10,10 @@
 */
 :- module(nutrition, []).
 
+:- use_module(base).
 :- use_module(library(persistency)).
+:- use_module(library(apply)).
+:- use_module(library(yall)).
 
 /*
   Declare the atoms that we will store in the Nutrition database.
@@ -20,7 +23,9 @@
   retract_name(Arg, ...), and retractall_name(Arg, ...)
 */
 :- persistent
-     meal(id:nonneg, date:float, calories:float).
+     meal(event:atom),
+     calories(attribute:atom, value:number),
+     servings(attribute:atom, type:atom, value:number).
 
 /*
   Accepts one argument: FileName, a string that represents a file
@@ -29,9 +34,13 @@
 attachNutritionDB(FileName) :-
   db_attach(FileName, []).
 
-/*
-  Adds a meal entry to the Nutrition database.
-*/
-recordMeal(Id, Date, Calories) :-
-  with_mutex(nutrition, assert_meal(Id, Date, Calories)).
+servingsCreate(MealID, serving(Type, Amount)) :-
+  base:attributeCreate(MealID, AttributeID),
+  assert_servings(AttributeID, Type, Amount).
 
+mealCreate(Calories, Servings, ID) :-
+  base:eventCreate(ID),
+  assert_meal(ID),
+  base:attributeCreate(ID, AttributeID),
+  assert_calories(AttributeID, Calories),
+  maplist({ID}/[Serving]>>servingsCreate(ID, Serving), Servings).
