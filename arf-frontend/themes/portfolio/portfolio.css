@@ -2679,8 +2679,10 @@ table.padded-list tbody tr td {
 input, button {
   width: 100%; }
 
-.meal-form input {
+.form input[type="text"] {
   margin-bottom: 20px; }
+.form table {
+  width: 100%; }
 
 .light-section .section-content {
   background-color: white;
@@ -2709,5 +2711,3 @@ input, button {
 
   .section-content {
     width: 95%; } }
-
-/*# sourceMappingURL=portfolio.css.map */

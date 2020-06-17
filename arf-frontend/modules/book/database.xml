@@ -44,6 +44,7 @@
         <title><![CDATA[Guitar Practice]]></title>
         <body><![CDATA[
           <div class="section-content">
+            <div class='main_record_practice_session_block'></div>
           </div>
         ]]></body>
         <searchable>false</searchable>

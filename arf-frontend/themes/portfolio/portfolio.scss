@@ -129,9 +129,13 @@ $hero-height: 100vh;
 input, button {
   width: 100%;
 }
-.meal-form {
-  input {
+.form {
+  input[type="text"] {
     margin-bottom: 20px;
+  }
+  table {
+    margin-bottom: 20px;
+    width: 100%;
   }
 }
 .light-section {
