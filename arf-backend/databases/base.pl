@@ -89,3 +89,57 @@ assert(entry('ed794644-b030-11ea-a8d6-0a29365a243a',0)).
 assert(attribute('ed794644-b030-11ea-a8d6-0a29365a243a','ed793686-b030-11ea-ab65-0a29365a243a')).
 assert(entry('ed794806-b030-11ea-ad24-0a29365a243a',0)).
 assert(attribute('ed794806-b030-11ea-ad24-0a29365a243a','ed793686-b030-11ea-ab65-0a29365a243a')).
+assert(entry('94fd50ee-b04b-11ea-a138-0a29365a243a',0)).
+assert(entity('94fd50ee-b04b-11ea-a138-0a29365a243a',"Almeida: Lesson 1")).
+assert(entry('9a84b0b6-b04b-11ea-9b9f-0a29365a243a',0)).
+assert(entity('9a84b0b6-b04b-11ea-9b9f-0a29365a243a',"Almeida: Lesson 2")).
+assert(entry('a458b894-b04b-11ea-a197-0a29365a243a',0)).
+assert(entity('a458b894-b04b-11ea-a197-0a29365a243a',"Almeida: Lesson 3")).
+assert(entry('a458cd52-b04b-11ea-a99d-0a29365a243a',0)).
+assert(entity('a458cd52-b04b-11ea-a99d-0a29365a243a',"Almeida: Lesson 4")).
+assert(entry('a458de8c-b04b-11ea-bd9c-0a29365a243a',0)).
+assert(entity('a458de8c-b04b-11ea-bd9c-0a29365a243a',"Almeida: Lesson 5")).
+assert(entry('a458ef62-b04b-11ea-9ac5-0a29365a243a',0)).
+assert(entity('a458ef62-b04b-11ea-9ac5-0a29365a243a',"Almeida: Lesson 6")).
+assert(entry('a459002e-b04b-11ea-9756-0a29365a243a',0)).
+assert(entity('a459002e-b04b-11ea-9756-0a29365a243a',"Almeida: Lesson 7")).
+assert(entry('a4591122-b04b-11ea-9f2c-0a29365a243a',0)).
+assert(entity('a4591122-b04b-11ea-9f2c-0a29365a243a',"Almeida: Lesson 8")).
+assert(entry('a45921c6-b04b-11ea-b033-0a29365a243a',0)).
+assert(entity('a45921c6-b04b-11ea-b033-0a29365a243a',"Almeida: Lesson 9")).
+assert(entry('a4593256-b04b-11ea-9eb9-0a29365a243a',0)).
+assert(entity('a4593256-b04b-11ea-9eb9-0a29365a243a',"Almeida: Lesson 10")).
+assert(entry('a4594408-b04b-11ea-895e-0a29365a243a',0)).
+assert(entity('a4594408-b04b-11ea-895e-0a29365a243a',"Almeida: Lesson 11")).
+assert(entry('a45960b4-b04b-11ea-8f38-0a29365a243a',0)).
+assert(entity('a45960b4-b04b-11ea-8f38-0a29365a243a',"Almeida: Lesson 12")).
+assert(entry('a4599ee4-b04b-11ea-9bda-0a29365a243a',0)).
+assert(entity('a4599ee4-b04b-11ea-9bda-0a29365a243a',"Almeida: Lesson 13")).
+assert(entry('a459d828-b04b-11ea-9147-0a29365a243a',0)).
+assert(entity('a459d828-b04b-11ea-9147-0a29365a243a',"Almeida: Lesson 14")).
+assert(entry('a45a1310-b04b-11ea-88e4-0a29365a243a',0)).
+assert(entity('a45a1310-b04b-11ea-88e4-0a29365a243a',"Almeida: Lesson 15")).
+assert(entry('a45a4c36-b04b-11ea-b852-0a29365a243a',0)).
+assert(entity('a45a4c36-b04b-11ea-b852-0a29365a243a',"Almeida: Lesson 16")).
+assert(entry('a45a85ca-b04b-11ea-8550-0a29365a243a',0)).
+assert(entity('a45a85ca-b04b-11ea-8550-0a29365a243a',"Almeida: Lesson 17")).
+assert(entry('a45ac21a-b04b-11ea-a78a-0a29365a243a',0)).
+assert(entity('a45ac21a-b04b-11ea-a78a-0a29365a243a',"Almeida: Lesson 18")).
+assert(entry('a45aff28-b04b-11ea-b759-0a29365a243a',0)).
+assert(entity('a45aff28-b04b-11ea-b759-0a29365a243a',"Almeida: Lesson 19")).
+assert(entry('a45b3e66-b04b-11ea-8385-0a29365a243a',0)).
+assert(entity('a45b3e66-b04b-11ea-8385-0a29365a243a',"Almeida: Lesson 20")).
+assert(entry('a45b78d6-b04b-11ea-ad0a-0a29365a243a',0)).
+assert(entity('a45b78d6-b04b-11ea-ad0a-0a29365a243a',"Almeida: Lesson 21")).
+assert(entry('a45bb558-b04b-11ea-a12b-0a29365a243a',0)).
+assert(entity('a45bb558-b04b-11ea-a12b-0a29365a243a',"Almeida: Lesson 22")).
+assert(entry('a45bf2ca-b04b-11ea-83a6-0a29365a243a',0)).
+assert(entity('a45bf2ca-b04b-11ea-83a6-0a29365a243a',"Almeida: Lesson 23")).
+assert(entry('a45c2d08-b04b-11ea-b47b-0a29365a243a',0)).
+assert(entity('a45c2d08-b04b-11ea-b47b-0a29365a243a',"Almeida: Lesson 24")).
+assert(entry('a4cea75c-b04b-11ea-b221-0a29365a243a',0)).
+assert(entity('a4cea75c-b04b-11ea-b221-0a29365a243a',"Almeida: Lesson 25")).
+assert(entry('11b391f2-b04c-11ea-96fa-0a29365a243a',0)).
+assert(entity('11b391f2-b04c-11ea-96fa-0a29365a243a',"Mangore: La Catedral 1")).
+assert(entry('13f9a79e-b04c-11ea-807a-0a29365a243a',0)).
+assert(entity('13f9a79e-b04c-11ea-807a-0a29365a243a',"Mangore: La Catedral 3")).
