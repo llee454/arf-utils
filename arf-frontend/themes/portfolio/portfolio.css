@@ -2614,7 +2614,7 @@ table.padded-list tbody tr td {
   height: 100%;
   padding: 10px 0;
   text-align: center;
-  width: 130px; }
+  width: 105px; }
   .header-menu-item:first-of-type, .header-menu-item:last-of-type {
     text-align: left; }
 
@@ -2709,3 +2709,5 @@ input, button {
 
   .section-content {
     width: 95%; } }
+
+/*# sourceMappingURL=portfolio.css.map */
