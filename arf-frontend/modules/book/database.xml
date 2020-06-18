@@ -6,13 +6,7 @@
     <body><![CDATA[
       <div class="section-content">
         <h1>ARF Data Utils</h1>
-        <p>
-           Enter a Prolog query to query the Prolog database.<br>
-           For example:
-          <ul>
-            <li>findall(Calories,nutrition:meal(Id,Date,Calories),Xs),write(Xs)</li>
-          </ul>
-        </p>
+        <p>Enter a Prolog query to query the Prolog database.</p>
         <div class='main_prolog_query_block'></div>
       </div>
     ]]></body>
@@ -22,19 +16,17 @@
         <title><![CDATA[Nutrition]]></title>
         <body><![CDATA[
           <div class="section-content">
-            <p>
-               Enter the number of calories in your meal.<br>
-            </p>
             <div class='main_record_meal_block'></div>
           </div>
         ]]></body>
         <searchable>false</searchable>
       </page>
       <page>
-        <name>exercise</name>
-        <title><![CDATA[Excercise]]></title>
+        <name>health</name>
+        <title><![CDATA[Health]]></title>
         <body><![CDATA[
           <div class="section-content">
+            <div class='main_record_health_block'></div>
           </div>
         ]]></body>
         <searchable>false</searchable>

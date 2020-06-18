@@ -10,7 +10,8 @@ MODULE_LOAD_HANDLERS.add (
   block_HANDLERS.addHandlers ({
     'main_prolog_query_block': main_prologQueryBlock,
     'main_record_meal_block': main_recordMealBlock,
-    'main_record_practice_session_block': main_recordPracticeSessionBlock
+    'main_record_practice_session_block': main_recordPracticeSessionBlock,
+    'main_record_health_block': main_recordHealthBlock
   });
 
   // I. Display/hide the Back to Top tab.
@@ -211,8 +212,6 @@ function main_recordPracticeSessionBlock (context, done) {
     {uuid: '13f9a79e-b04c-11ea-807a-0a29365a243a', name: "Mangore: La Catedral 3"}
   ];
 
-  var responseElement = $('<div></div>').attr ('id', 'practice-response');
-
   var tableElement = $('<tbody></tbody>');
 
   $(context.element)
@@ -241,6 +240,8 @@ function main_recordPracticeSessionBlock (context, done) {
             .text (exercise.name))));
   });
 
+  var responseElement = $('<div></div>').attr ('id', 'practice-response');
+
   $(context.element)
     .append ($('<button></button>')
       .attr ('id', 'practice-send')
@@ -264,4 +265,84 @@ function main_recordPracticeSessionBlock (context, done) {
     .append (responseElement);
 
   done (null);
+}
+
+function main_recordHealthBlock (context, done) {
+  var metrics = [
+    {
+      name: "weight",
+      label: "Weight (lb):",
+      query: value => 'health:weightMeasurementCreate(' + value + ', 0.2, _)'
+    },
+    {
+      name: "waist",
+      label: "Waist Circumference (in) (+/- 1/4in):",
+      query: value => 'health:waistCircumferenceMeasurementCreate(' + value + ', 0.25, _)'
+    },
+    {
+      name: "bicep",
+      label: "Bicep Circumference (in) (+/- 1/8in):",
+      query: value => 'health:bicepCircumferenceMeasurementCreate(' + value + ', 0.125, _)'
+    },
+    {
+      name: "systolic",
+      label: "Systolic Blood Pressure (mmHg):",
+      query: value => 'health:bloodPressureSystolicMeasurementCreate(' + value + ', _)'
+    },
+    {
+      name: "diastolic",
+      label: "Diastolic Blood Pressure (mmHg):",
+      query: value => 'health:bloodPressureDiastolicMeasurementCreate(' + value + ', _)'
+    },
+    {
+      name: "pulse",
+      label: "Pulse (bpm):",
+      query: value => 'health:pulseMeasurementCreate(' + value + ', _)'
+    }
+  ];
+
+  $(context.element)
+    .attr ('id', 'health-form')
+    .addClass('form');
+
+  metrics.forEach (metric => {
+    $(context.element)
+      .append ($('<label></label>')
+        .attr ('for', metric.name)
+        .text (metric.label))
+      .append ($('<input></input>')
+        .attr ('name', metric.name)
+        .attr ('type', 'text')
+        .attr ('value', ''));
+  });
+
+  var responseElement = $('<div></div>').attr ('id', 'practice-response');
+
+  $(context.element)
+    .append ($('<button></button>')
+      .attr ('id', 'practice-send')
+      .text ('Send')
+      .click (function () {
+         var query = metrics.reduce ((acc, metric) => {
+           var value = $('#health-form > input[name="' + metric.name + '"]').val ();
+           if (value != '') {
+             acc.push (metric.query (value));
+           }
+           return acc;
+         }, []);
+
+         if (0 < query.length) {
+           var url = 'https://arf.larrylee.tech:5000/run?command=' + query.join (', ') + '.';
+           alert (url);
+           $.get (url,
+             function (content) {
+               $('#practice-response').text (content)
+             }, 'text').fail (function () {
+               alert ('failed');
+             });
+         }
+       }))
+    .append (responseElement);
+
+  done(null);
 }
