@@ -13,3 +13,6 @@
 
 :- use_module(practice).
 :- practice:attachDB("databases/practice.pl").
+
+:- use_module(health).
+:- health:attachDB("databases/health.pl").

@@ -35,7 +35,24 @@
        ID; and asserts that the entity referenced by by performed
        an action described by the event referenced by event.
      */
-     action(event:atom, actor:atom).
+     action(event:atom, actor:atom),
+
+     /*
+       Accepts three arguments: action, an action ID; of, an entity
+       ID; unit, the measurement units; and value, the measurement
+       value.
+     */
+     measurement(action:atom, of:atom, unit:atom, value:any),
+
+     /*
+       Accepts two arguments: measurement, a measurement ID; and
+       precision, the precision of the measurement.
+     */
+     measurementQuality(measurement:atom, precision:any),
+
+     weight(attributeID:atom),
+
+     circumference(attributeID:atom).
 
 /*
   Accepts one argument: FileName, a string that represents a file
@@ -60,17 +77,26 @@ eventCreate(Timestamp, ID) :-
   entryCreate(ID),
   assert_event(ID, Timestamp).
 
-actionCreate(ActorID) :-
-  eventCreate(EventID),
-  assert_action(EventID, ActorID).
-
 attributeCreate(SubjectID, ID) :-
   entryCreate(ID),
   assert_attribute(ID, SubjectID).
 
+actionCreate(ActorID, EventID) :-
+  eventCreate(EventID),
+  assert_action(EventID, ActorID).
+
 actionEventID(Action, EventID) :- Action = action(EventID, _).
 
 actionActorID(Action, ActorID) :- Action = action(_, ActorID).
+
+measurementCreate(SourceID, OfID, Unit, Value, ID) :-
+  actionCreate(SourceID, ID),
+  assert_measurement(ID, OfID, Unit, Value).
+
+measurementCreate(SourceID, OfID, Unit, Value, Precision, ID) :-
+  actionCreate(SourceID, ID),
+  assert_measurement(ID, OfID, Unit, Value),
+  assert_measurementQuality(ID, Precision).
 
 /*
   Accepts one argument; action, an action term; and returns the
