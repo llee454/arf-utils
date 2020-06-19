@@ -391,7 +391,7 @@ function main_recordStudySessionBlock (context, done) {
       .click (function () {
          var selected = $('#study-form option:selected').get (0);
 
-         var url = 'https://arf.larrylee.tech:5000/run?command=studySession(' + $(selected).attr ('value') + ', min, ' + $('#study-duration-input').val () + ', _).';
+         var url = "https://arf.larrylee.tech:5000/run?command=studySession('" + $(selected).attr ('value') + "', min, " + $('#study-duration-input').val () + ', _).';
          alert (url);
 
          $.get (url,
