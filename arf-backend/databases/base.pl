@@ -214,3 +214,7 @@ assert(entry('d2bc84dc-b16c-11ea-9c5e-0a29365a243a',0)).
 assert(attribute('d2bc84dc-b16c-11ea-9c5e-0a29365a243a','8dc42ff6-b16c-11ea-8741-0a29365a243a')).
 assert(entry('db2fab30-b16c-11ea-ba9e-0a29365a243a',0)).
 assert(attribute('db2fab30-b16c-11ea-ba9e-0a29365a243a','8dc42ff6-b16c-11ea-8741-0a29365a243a')).
+assert(entry('0c9ebcba-b235-11ea-b786-0a29365a243a',0)).
+assert(entity('0c9ebcba-b235-11ea-b786-0a29365a243a',"Mathematics")).
+assert(entry('12b810e2-b235-11ea-b000-0a29365a243a',0)).
+assert(entity('12b810e2-b235-11ea-b000-0a29365a243a',"Computer Science")).
