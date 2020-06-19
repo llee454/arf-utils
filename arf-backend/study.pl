@@ -21,7 +21,7 @@
        Accepts two arguments: activityID; and subjectID; and asserts
        that the referenced activity represents a study session.
      */
-     studySession(activityID:atom, subjectID:atom).
+     session(activityID:atom, subjectID:atom).
 
 attachDB(FileName) :- db_attach(FileName, []).
 
@@ -29,7 +29,7 @@ subjectCreate(Name, ID) :-
   base:entityCreate(Name, ID),
   assert_subject(ID).
 
-studySession(SubjectID, Unit, Duration, ID) :-
+sessionCreate(SubjectID, Unit, Duration, ID) :-
   base:entity(ActorID, "me"), !,
   base:activityCreate(ActorID, Unit, Duration, ID),
-  assert_studySession(ID, SubjectID).
+  assert_session(ID, SubjectID).
