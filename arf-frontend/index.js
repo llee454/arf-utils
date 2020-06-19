@@ -11,7 +11,8 @@ MODULE_LOAD_HANDLERS.add (
     'main_prolog_query_block': main_prologQueryBlock,
     'main_record_meal_block': main_recordMealBlock,
     'main_record_practice_session_block': main_recordPracticeSessionBlock,
-    'main_record_health_block': main_recordHealthBlock
+    'main_record_health_block': main_recordHealthBlock,
+    'main_record_study_block': main_recordStudySessionBlock
   });
 
   // I. Display/hide the Back to Top tab.
@@ -341,6 +342,64 @@ function main_recordHealthBlock (context, done) {
                alert ('failed');
              });
          }
+       }))
+    .append (responseElement);
+
+  done(null);
+}
+
+function main_recordStudySessionBlock (context, done) {
+  var subjects = [
+    {
+      label: "Mathematics",
+      value: "0c9ebcba-b235-11ea-b786-0a29365a243a"
+    },
+    {
+      label: "Computer Science",
+      value: "12b810e2-b235-11ea-b000-0a29365a243a"
+    }
+  ];
+
+  var selectElement = $('<select></select>').attr ('required', 'true');
+
+  subjects.forEach (subject => {
+    $(selectElement)
+      .append ($('<option></option>')
+        .attr ('value', subject.value)
+        .text (subject.label));
+  });
+
+  $(context.element)
+    .attr ('id', 'study-form')
+    .addClass ('form')
+    .append ($('<label></label>')
+      .attr ('for', 'duration')
+      .text ('Duration (min):'))
+    .append ($('<input></input>')
+      .attr ('id', 'study-duration-input')
+      .attr ('name', 'duration')
+      .attr ('type', 'text')
+      .attr ('value', '0'))
+    .append (selectElement);
+
+  var responseElement = $('<div></div>').attr ('id', 'study-response');
+
+  $(context.element)
+    .append ($('<button></button>')
+      .attr ('id', 'study-send')
+      .text ('Send')
+      .click (function () {
+         var selected = $('#study-form option:selected').get (0);
+
+         var url = 'https://arf.larrylee.tech:5000/run?command=studySession(' + $(selected).attr ('value') + ', min, ' + $('#study-duration-input').val () + ', _).';
+         alert (url);
+
+         $.get (url,
+           function (content) {
+             $('#study-response').text (content)
+           }, 'text').fail (function () {
+             alert ('failed');
+           });
        }))
     .append (responseElement);
 

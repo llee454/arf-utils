@@ -38,6 +38,13 @@
      action(event:atom, actor:atom),
 
      /*
+       Accepts one argument: actionID, an actionID; and asserts
+       that the referenced action represents an activity (an action
+       spanning some duration).
+     */
+     activity(actionID:atom),
+
+     /*
        Accepts three arguments: action, an action ID; of, an entity
        ID; unit, the measurement units; and value, the measurement
        value.
@@ -49,6 +56,8 @@
        precision, the precision of the measurement.
      */
      measurementQuality(measurement:atom, precision:any),
+
+     duration(attributeID:atom),
 
      weight(attributeID:atom),
 
@@ -97,6 +106,17 @@ measurementCreate(SourceID, OfID, Unit, Value, Precision, ID) :-
   actionCreate(SourceID, ID),
   assert_measurement(ID, OfID, Unit, Value),
   assert_measurementQuality(ID, Precision).
+
+durationCreate(SourceID, EventID, Unit, Value, ID) :-
+  attributeCreate(EventID, ID),
+  assert_duration(ID),
+  measurementCreate(SourceID, ID, Unit, Value, _).
+
+activityCreate(ActorID, Unit, Duration, ID) :-
+  base:entity(ActorID, "me"), !,
+  actionCreate(ActorID, ID),
+  assert_activity(ID),
+  durationCreate(ActorID, ID, Unit, Duration, _).
 
 /*
   Accepts one argument; action, an action term; and returns the

@@ -46,6 +46,7 @@
         <title><![CDATA[Study]]></title>
         <body><![CDATA[
           <div class="section-content">
+            <div class='main_record_study_block'></div>
           </div>
         ]]></body>
         <searchable>false</searchable>

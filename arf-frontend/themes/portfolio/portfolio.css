@@ -2681,7 +2681,8 @@ input, button {
 
 .form input[type="text"] {
   margin-bottom: 20px; }
-.form table {
+.form select, .form table {
+  margin-bottom: 20px;
   width: 100%; }
 
 .light-section .section-content {
