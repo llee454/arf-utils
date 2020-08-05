@@ -69,35 +69,103 @@
 */
 attachBaseDB(FileName) :- db_attach(FileName, []).
 
+/*
+  Accepts one argument: +ID, an entity ID; and creates an entity
+  that has the given ID.
+*/
 entryCreate(ID) :-
   uuid(ID),
   assert_entry(ID, 0).
 
+/*
+  Accepts two arguments: +Name, a string that represents an entity
+  name; and +ID, an entity ID; and creates an entity that has the
+  given ID and name.
+*/
 entityCreate(Name, ID) :-
   entryCreate(ID),
   assert_entity(ID, Name).
 
+/*
+  Accepts one argument: +ID, an entity ID; and creates an event that
+  has the given ID and the current time.
+*/
 eventCreate(ID) :-
   entryCreate(ID),
   get_time(Timestamp),
   assert_event(ID, Timestamp).
 
+/*
+  Accepts two arguments: +Timestamp, a timestamp; and +ID, an entity
+  ID; and creates an event that has the given ID and timestamp.
+*/
 eventCreate(Timestamp, ID) :-
   entryCreate(ID),
   assert_event(ID, Timestamp).
 
+/*
+  Accepts one argument: +Event, an event; and returns the date at
+  which the event occured as a -DateTime.
+*/
+eventDateTime(EventID, DateTime) :-
+  event(EventID, Timestamp),
+  stamp_date_time(Timestamp, DateTime, 0).
+
+/*
+  A predicate that accepts four arguments: +EventID, an entity ID; and
+  ?Year, ?Month, and ?Day, integers; and succeeds iff the event
+  has occured on the given date.
+*/
+eventDate(EventID, Year, Month, Day) :-
+  event(EventID, Timestamp),
+  stamp_date_time(Timestamp, DateTime, 0),
+  date_time_value(year, DateTime, Year),
+  date_time_value(month, DateTime, Month),
+  date_time_value(day, DateTime, Day).
+
+eventCompareTimestamp(Result, EventID0, EventID1) :-
+  event(EventID0, Timestamp0),
+  event(EventID1, Timestamp1),
+  compare(Result, Timestamp0, Timestamp1).
+
+eventsSort(SortedEventIDs) :-
+  findall(EventID, event(EventID, _), EventIDs),
+  predsort(eventCompareTimestamp, EventIDs, SortedEventIDs).
+
+/*
+  Accepts two arguments: +SubjectID and +ID, entity IDs; and creates
+  an attribute with ID for the entity referenced by SubjectID.
+*/
 attributeCreate(SubjectID, ID) :-
   entryCreate(ID),
   assert_attribute(ID, SubjectID).
 
+/*
+  Accepts two arguments: +ActorID and +EventID, and creates an
+  event with the given ID and attributes the action to the actor.
+*/
 actionCreate(ActorID, EventID) :-
   eventCreate(EventID),
   assert_action(EventID, ActorID).
 
+/*
+  Accepts one argument: +Action, an action; and returns -EventID,
+  the event ID of the given action.
+*/
 actionEventID(Action, EventID) :- Action = action(EventID, _).
 
+/*
+  Accepts one argument: +Action, an action; and returns -ActorID,
+  the actor ID of the given action.
+*/
 actionActorID(Action, ActorID) :- Action = action(_, ActorID).
 
+/*
+  Accepts five arguments: +SourceID and +ofID, entity IDs; +Unit, an
+  atom such as bpm, min, etc; and +Value; and creates a measurement
+  with these properties and returns the ID of the created measurement
+  named -ID.
+*/
 measurementCreate(SourceID, OfID, Unit, Value, ID) :-
   actionCreate(SourceID, ID),
   assert_measurement(ID, OfID, Unit, Value).
