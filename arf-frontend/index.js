@@ -74,7 +74,7 @@ function main_prologQueryBlock (context, done) {
 }
 
 function main_recordMealBlock (context, done) {
-  var url = 'https://arf.larrylee.tech:5000/run?command=nutrition:caloriesToday(Calories).';
+  var url = 'https://arf.larrylee.tech:5000/run?command=nutrition:caloriesToday(Calories), write(Calories), nl.';
   var caloriesElement = $('<p></p>').text ('loading...');
 
   $(context.element)
