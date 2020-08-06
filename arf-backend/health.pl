@@ -58,17 +58,17 @@ bicepCircumferenceMeasurementCreate(Value, Precision, ID) :-
   bicepCircumference(AttributeID), !,
   base:measurementCreate(SubjectID, AttributeID, in, Value, Precision, ID). 
 
-bloodPressureSystolicMeasurementCreate(Value, ID) :-
+bloodPressureSystolicMeasurementCreate(Value, Precision, ID) :-
   base:entity(SubjectID, "me"), !,
   bloodPressureSystolic(AttributeID), !,
-  base:measurementCreate(SubjectID, AttributeID, mmHg, Value, ID). 
+  base:measurementCreate(SubjectID, AttributeID, mmHg, Value, Precision, ID).
 
-bloodPressureDiastolicMeasurementCreate(Value, ID) :-
+bloodPressureDiastolicMeasurementCreate(Value, Precision, ID) :-
   base:entity(SubjectID, "me"), !,
   bloodPressureDiastolic(AttributeID), !,
-  base:measurementCreate(SubjectID, AttributeID, mmHg, Value, ID). 
+  base:measurementCreate(SubjectID, AttributeID, mmHg, Value, Precision, ID).
 
-pulseMeasurementCreate(Value, ID) :-
+pulseMeasurementCreate(Value, Precision, ID) :-
   base:entity(SubjectID, "me"), !,
   pulse(AttributeID), !,
-  base:measurementCreate(SubjectID, AttributeID, bpm, Value, ID). 
+  base:measurementCreate(SubjectID, AttributeID, bpm, Value, Precision, ID). 

@@ -11,6 +11,7 @@
 :- module(nutrition, []).
 
 :- use_module(base).
+:- use_module(aux).
 :- use_module(library(persistency)).
 :- use_module(library(apply)).
 :- use_module(library(yall)).
@@ -44,3 +45,32 @@ mealCreate(Calories, Servings, ID) :-
   base:attributeCreate(ID, AttributeID),
   assert_calories(AttributeID, Calories),
   maplist({ID}/[Serving]>>servingsCreate(ID, Serving), Servings).
+
+mealToday(MealID) :-
+  base:event(MealID, Timestamp),
+  aux:timestampToday(Timestamp).
+
+/*
+  +ID, -Calories
+*/
+mealCalories(ID, Calories) :-
+  base:attribute(AttributeID, ID),
+  calories(AttributeID, Calories).
+
+/* -IDs */
+meals(IDs) :-
+  findall(ID, meal(ID), IDs).
+
+/*
+  Returns -IDs, a list of meal IDs that represent the meals eaten today.
+*/
+mealsToday(IDs) :-
+  meals(AllIDs),
+  include(mealToday, AllIDs, IDs).
+
+/*
+  Returns -Calories, the number of calories consumed today.
+*/
+caloriesToday(Calories) :-
+  mealsToday(IDs),
+  foldl({}/[ID, Acc, Res]>>(mealCalories(ID, MealCalories), Res is Acc + MealCalories), IDs, 0, Calories).
