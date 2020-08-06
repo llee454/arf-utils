@@ -371,6 +371,10 @@ function main_recordStudySessionBlock (context, done) {
     {
       label: "Computer Science",
       value: "12b810e2-b235-11ea-b000-0a29365a243a"
+    },
+    {
+      label: "Soaring",
+      value: "80b4e93e-d789-11ea-a7d8-0a29365a243a"
     }
   ];
 
