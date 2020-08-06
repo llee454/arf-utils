@@ -10,7 +10,8 @@
         <div class='main_prolog_query_block'></div>
         <h3>Tips:</h3>
         <ul>
-          <li>Example: <code>nutrition:mealsToday(IDs), write(IDs), nl</code>
+          <li><code>nutrition:mealsToday(IDs), write(IDs), nl.</code></li>
+          <li><code>findall(W,base:measurement(_,_,lbs,W,_), Ws), write(Ws), nl.</code></li>
           <li>See: <a href="https://github.com/llee454/arf-utils/tree/master/arf-backend">GitHub: ARF Utils</a> for functions</li>
         </ul>
       </div>
