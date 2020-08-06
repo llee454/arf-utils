@@ -74,6 +74,20 @@ function main_prologQueryBlock (context, done) {
 }
 
 function main_recordMealBlock (context, done) {
+  var url = 'https://arf.larrylee.tech:5000/run?command=nutrition:caloriesToday(Calories).';
+  var caloriesElement = $('<p></p>').text ('loading...');
+
+  $(context.element)
+    .append ($('<p>Calories eaten today:</p>'))
+    .append (caloriesElement);
+
+  $.get (url,
+    function (content) {
+      $(caloriesElement).text (content);
+    }, 'text').fail (function () {
+      $(caloriesElement).text ('failed to load');
+    });
+
   var responseElement = $('<div></div>').attr ('id', 'prolog-meal-response');
 
   $(context.element)
