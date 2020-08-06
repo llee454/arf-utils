@@ -1649,3 +1649,5 @@ assert(entry('b8e98d14-d752-11ea-af2f-0a29365a243a',0,0.0)).
 assert(attribute('b8e98d14-d752-11ea-af2f-0a29365a243a','b8e97ad6-d752-11ea-9199-0a29365a243a')).
 assert(entry('b8e98f08-d752-11ea-a510-0a29365a243a',0,0.0)).
 assert(attribute('b8e98f08-d752-11ea-a510-0a29365a243a','b8e97ad6-d752-11ea-9199-0a29365a243a')).
+assert(entry('80b4e93e-d789-11ea-a7d8-0a29365a243a',0,1596679615.8052864)).
+assert(entity('80b4e93e-d789-11ea-a7d8-0a29365a243a',"Soaring")).
