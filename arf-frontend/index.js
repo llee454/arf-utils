@@ -302,17 +302,17 @@ function main_recordHealthBlock (context, done) {
     {
       name: "systolic",
       label: "Systolic Blood Pressure (mmHg):",
-      query: value => 'health:bloodPressureSystolicMeasurementCreate(' + value + ', _)'
+      query: value => 'health:bloodPressureSystolicMeasurementCreate(' + value + ', unknown, _)'
     },
     {
       name: "diastolic",
       label: "Diastolic Blood Pressure (mmHg):",
-      query: value => 'health:bloodPressureDiastolicMeasurementCreate(' + value + ', _)'
+      query: value => 'health:bloodPressureDiastolicMeasurementCreate(' + value + ', unknown, _)'
     },
     {
       name: "pulse",
       label: "Pulse (bpm):",
-      query: value => 'health:pulseMeasurementCreate(' + value + ', _)'
+      query: value => 'health:pulseMeasurementCreate(' + value + ',unknown , _)'
     }
   ];
 
