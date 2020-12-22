@@ -39,7 +39,7 @@
       </page>
       <page>
         <name>practice</name>
-        <title><![CDATA[Guitar Practice]]></title>
+        <title><![CDATA[Practice]]></title>
         <body><![CDATA[
           <div class="section-content">
             <div class='main_record_practice_session_block'></div>

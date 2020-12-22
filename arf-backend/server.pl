@@ -51,10 +51,15 @@
 :- use_module(study).
 :- study:attachDB("databases/study.pl").
 
+% load export modules.
+:- use_module(nutritionExport).
+:- use_module(healthExport).
+
 % define the routing table.
 :- http_handler(root(status), statusHandler, []).
 :- http_handler(root(run), runHandler, []).
-:- http_handler(root(meal), mealHandler, []).
+:- http_handler(root(meals), mealsHandler, []).
+:- http_handler(root(weight), weightHandler, []).
 
 % process status requests.
 statusHandler(_Request)
@@ -70,6 +75,15 @@ runHandler(Request) :-
   term_string(Command, CommandString),
   call(Command),
   format('Done').
+
+% process export requests.
+mealsHandler(Request) :-
+  nutritionExport:writeMealRecords('exports/meals.csv'),
+  http_reply_file('exports/meals.csv', [cache(false)], []).
+
+weightHandler(_) :-
+  healthExport:writeWeightRecords('exports/weight.csv'),
+  http_reply_file('exports/weight.csv', [cache(false)], []).
 
 % start the server.
 % specify the initialization code (http_daemon) and call

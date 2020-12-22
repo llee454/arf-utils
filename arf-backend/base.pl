@@ -190,16 +190,16 @@ measurementCreate(SourceID, OfID, Unit, Value, Precision, ID) :-
   actionCreate(SourceID, ID),
   assert_measurement(ID, OfID, Unit, Value, Precision).
 
-durationCreate(SourceID, EventID, Unit, Value, ID) :-
+durationCreate(SourceID, EventID, Unit, Value, Precision, ID) :-
   attributeCreate(EventID, ID),
   assert_duration(ID),
-  measurementCreate(SourceID, ID, Unit, Value, _).
+  measurementCreate(SourceID, ID, Unit, Value, Precision, _).
 
-activityCreate(ActorID, Unit, Duration, ID) :-
+activityCreate(ActorID, Unit, Duration, DurationPrec, ID) :-
   base:entity(ActorID, "me"), !,
   actionCreate(ActorID, ID),
   assert_activity(ID),
-  durationCreate(ActorID, ID, Unit, Duration, _).
+  durationCreate(ActorID, ID, Unit, Duration, DurationPrec, _).
 
 /*
   Accepts one argument; action, an action term; and returns the

@@ -79,7 +79,8 @@ function main_recordMealBlock (context, done) {
 
   $(context.element)
     .append ($('<p>Calories eaten today:</p>'))
-    .append (caloriesElement);
+    .append (caloriesElement)
+    .append ($('<p>Meal History (CSV): <a href="https://arf.larrylee.tech:5000/meals">meals.csv</a></p>'));
 
   $.get (url,
     function (content) {
@@ -156,11 +157,20 @@ function main_recordMealBlock (context, done) {
       .attr ('type', 'text'))
 
     .append ($('<label></label>')
-      .attr ('for', 'nuts')
+      .attr ('for', 'sugar')
       .text ('Sugar servings:'))
     .append ($('<input></input>')
       .attr ('id', 'prolog-meal-sugar-input')
       .attr ('name', 'sugar')
+      .attr ('value', '0')
+      .attr ('type', 'text'))
+
+    .append ($('<label></label>')
+      .attr ('for', 'fat')
+      .text ('Fats servings:'))
+    .append ($('<input></input>')
+      .attr ('id', 'prolog-meal-fat-input')
+      .attr ('name', 'fat')
       .attr ('value', '0')
       .attr ('type', 'text'))
 
@@ -175,7 +185,8 @@ function main_recordMealBlock (context, done) {
               'prolog-meal-dairy-input',
               'prolog-meal-meat-input',
               'prolog-meal-nuts-input',
-              'prolog-meal-sugar-input'
+              'prolog-meal-sugar-input',
+              'prolog-meal-fat-input'
             ].map (function (id) {
               var value = $('#' + id).val ();
               var label = $('#' + id).attr ('name');
@@ -283,6 +294,9 @@ function main_recordPracticeSessionBlock (context, done) {
 }
 
 function main_recordHealthBlock (context, done) {
+  $(context.element)
+    .append ($('<p>Weight History (CSV): <a href="https://arf.larrylee.tech:5000/weight">weight.csv</a></p>'));
+
   var metrics = [
     {
       name: "weight",
@@ -331,7 +345,7 @@ function main_recordHealthBlock (context, done) {
         .attr ('value', ''));
   });
 
-  var responseElement = $('<div></div>').attr ('id', 'practice-response');
+  var responseElement = $('<div></div>').attr ('id', 'health-response');
 
   $(context.element)
     .append ($('<button></button>')
@@ -351,7 +365,7 @@ function main_recordHealthBlock (context, done) {
            alert (url);
            $.get (url,
              function (content) {
-               $('#practice-response').text (content)
+               $('#health-response').text (content)
              }, 'text').fail (function () {
                alert ('failed');
              });
@@ -409,7 +423,7 @@ function main_recordStudySessionBlock (context, done) {
       .click (function () {
          var selected = $('#study-form option:selected').get (0);
 
-         var url = "https://arf.larrylee.tech:5000/run?command=study:sessionCreate('" + $(selected).attr ('value') + "', min, " + $('#study-duration-input').val () + ', _).';
+         var url = "https://arf.larrylee.tech:5000/run?command=study:sessionCreate('" + $(selected).attr ('value') + "', min, " + $('#study-duration-input').val () + ', 5, _).';
          alert (url);
 
          $.get (url,
