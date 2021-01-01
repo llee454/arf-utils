@@ -75,18 +75,49 @@ function main_prologQueryBlock (context, done) {
 
 function main_recordMealBlock (context, done) {
   var url = 'https://arf.larrylee.tech:5000/run?command=nutrition:caloriesToday(Calories), write(Calories), nl.';
-  var caloriesElement = $('<p></p>').text ('loading...');
+  var caloriesElement = $('<span></span>').text ('loading...');
+  var mealSize = $('<span></span>').text ('loading...');
+  var calorieLimit = $('<span></span>').text ('loading...');
+  var numCaloriesRemaining = $('<span></span>').text ('loading...');
+  var numHours = $('<span></span>').text ('loading...');
 
   $(context.element)
-    .append ($('<p>Calories eaten today:</p>'))
-    .append (caloriesElement)
-    .append ($('<p>Meal History (CSV): <a href="https://arf.larrylee.tech:5000/meals">meals.csv</a></p>'));
+    .append ($('<p><strong>Calories eaten today: </strong></p>')
+      .append (caloriesElement)
+      .append ('<small> (KCal)</small>'))
+    .append ($('<p><strong>Accumulated Calories: </strong></p>')
+      .append (calorieLimit)
+      .append ('<small> (KCal)</small>'))
+    .append ($('<p><strong>Hours Till Next Meal: </strong></p>')
+      .append (numHours)
+      .append ('<small> (Hrs)</small>'));
 
   $.get (url,
     function (content) {
       $(caloriesElement).text (content);
     }, 'text').fail (function () {
       $(caloriesElement).text ('failed to load');
+    });
+
+  $.get ('https://arf.larrylee.tech:5000/meal_size',
+    function (content) {
+      $(mealSize).text (content);
+    }, 'text').fail (function () {
+      $(mealSize).text ('failed to load');
+    });
+
+  $.get ('https://arf.larrylee.tech:5000/remaining_cals',
+    function (content) {
+      $(calorieLimit).text (content);
+    }, 'text').fail (function () {
+      $(calorieLimit).text ('failed to load');
+    });
+
+  $.get ('https://arf.larrylee.tech:5000/hours_till_next_meal',
+    function (content) {
+      $(numHours).text (content);
+    }, 'text').fail (function () {
+      $(numHours).text ('failed to load');
     });
 
   var responseElement = $('<div></div>').attr ('id', 'prolog-meal-response');
@@ -202,9 +233,18 @@ function main_recordMealBlock (context, done) {
               alert ('failed');
             });
         }))
-   .append (responseElement);
+    .append (responseElement)
+    .append ($('<div class="accordion_block"></div>')
+      .append ($('<div class="accordion_item_block"></div>')
+        .append ($('<div class="accordion_item_number">1</div>'))
+        .append ($('<div class="accordion_item_title">Details</div>'))
+        .append ($('<div class="accordion_item_body"></div>')
+          .append ($('<p><strong>Recommended Meal Size: </strong></p>'))
+          .append (mealSize)
+          .append ('<small> (KCal)</small>')
+          .append ($('<p>Meal History (CSV): <a href="https://arf.larrylee.tech:5000/meals">meals.csv</a></p>')))));
 
-  done (null);
+  done (null, $(context.element));
 }
 
 function main_recordPracticeSessionBlock (context, done) {
@@ -242,13 +282,15 @@ function main_recordPracticeSessionBlock (context, done) {
 
   $(context.element)
     .addClass ('form')
+    .addClass ('practice-form')
     .append ($('<label></label>')
       .attr ('for', 'duration')
       .text ('Duration (min):'))
     .append ($('<input></input>')
       .attr ('id', 'practice-duration-input')
       .attr ('name', 'duration')
-      .attr ('type', 'text')
+      .attr ('type', 'number')
+      .attr ('min', '1')
       .attr ('value', '0'))
     .append ($('<table></table>')
       .append (tableElement));

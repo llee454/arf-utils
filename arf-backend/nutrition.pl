@@ -74,3 +74,60 @@ mealsToday(IDs) :-
 caloriesToday(Calories) :-
   mealsToday(IDs),
   foldl({}/[ID, Acc, Res]>>(mealCalories(ID, MealCalories), Res is Acc + MealCalories), IDs, 0, Calories).
+
+/*
+  The recommended daily calorie limit when trying to lose weight.
+*/
+dailyCalorieLimit(1900).
+
+/*
+  Returns the number of calories that I should aim to consume each hour
+  when trying to lose weight.
+
+  Note: this function assumes that I eat all of my meals between
+  6:00 AM and 9:00 PM (local time).
+*/
+calorieConsumptionRate(Rate) :-
+  dailyCalorieLimit(CalorieLimit),
+  Rate is CalorieLimit / (12 + 9 - 6).
+
+/*
+  Returns the number of calories that I should aim to consume by the
+  current time, +Limit.
+*/
+calorieLimit(Limit) :-
+  get_time(CurrTime),
+  aux:convertESTToUTC('6:00', StartTime),
+  Hours is (CurrTime - StartTime)/3600,
+  calorieConsumptionRate(Rate),
+  Limit is Rate * Hours.
+
+/*
+  Returns the number of calories remaining to be consumed, +Remaining.
+
+  Note: this function is used to help pace my calorie consumption so
+  that throughout a day I can limit my consumption to my target daily
+  intake.
+*/
+remainingCalories(Remaining) :-
+  caloriesToday(Consumed),
+  calorieLimit(Limit),
+  Remaining is Limit - Consumed.
+
+/*
+  Returns my recommended meal size given three meals a day and 2 snacks
+  of 200 calories, +Cals.
+*/
+mealSize(Cals) :-
+  dailyCalorieLimit(Limit),
+  Cals is (Limit - 400)/3.
+
+/*
+  Returns the number of hours until I can have my next meal if calorie
+  pacing.
+*/
+numHoursTillNextMeal(Hours) :-
+  mealSize(MealCals),
+  remainingCalories(RemCals),
+  calorieConsumptionRate(Rate),
+  Hours is (MealCals - RemCals)/Rate.

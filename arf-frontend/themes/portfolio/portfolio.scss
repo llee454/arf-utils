@@ -183,3 +183,7 @@ input, button {
     width: 95%;
   }
 }
+input[type="checkbox"] {
+  min-height: 50px;
+  min-width: 50px;
+}

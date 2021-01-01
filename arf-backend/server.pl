@@ -60,12 +60,16 @@
 :- http_handler(root(run), runHandler, []).
 :- http_handler(root(meals), mealsHandler, []).
 :- http_handler(root(weight), weightHandler, []).
+:- http_handler(root(meals_rate), mealsRateHandler, []).
+:- http_handler(root(remaining_cals), remainingCalsHandler, []).
+:- http_handler(root(meal_size), mealSizeHandler, []).
+:- http_handler(root(hours_till_next_meal), nextMealHandler, []).
 
 % process status requests.
-statusHandler(_Request)
-  :- format('Access-Control-Allow-Origin: *~n'),
-     format('Content-type: text/plain~n~n'),
-     format('Status: Running~n').
+statusHandler(_Request) :-
+  format('Access-Control-Allow-Origin: *~n'),
+  format('Content-type: text/plain~n~n'),
+  format('Status: Running~n').
 
 % process query requests.
 runHandler(Request) :-
@@ -77,13 +81,37 @@ runHandler(Request) :-
   format('Done').
 
 % process export requests.
-mealsHandler(Request) :-
+mealsHandler(_) :-
   nutritionExport:writeMealRecords('exports/meals.csv'),
   http_reply_file('exports/meals.csv', [cache(false)], []).
 
 weightHandler(_) :-
   healthExport:writeWeightRecords('exports/weight.csv'),
   http_reply_file('exports/weight.csv', [cache(false)], []).
+
+mealsRateHandler(_) :-
+  format('Access-Control-Allow-Origin: *~n'),
+  format('Content-type: text/plain~n~n'),
+  nutrition:calorieConsumptionRate(Rate),
+  write(Rate).
+
+remainingCalsHandler(_) :-
+  format('Access-Control-Allow-Origin: *~n'),
+  format('Content-type: text/plain~n~n'),
+  nutrition:remainingCalories(Rem),
+  write(Rem).
+
+mealSizeHandler(_) :-
+  format('Access-Control-Allow-Origin: *~n'),
+  format('Content-type: text/plain~n~n'),
+  nutrition:mealSize(Cals),
+  write(Cals).
+
+nextMealHandler(_) :-
+  format('Access-Control-Allow-Origin: *~n'),
+  format('Content-type: text/plain~n~n'),
+  nutrition:numHoursTillNextMeal(Hours),
+  write(Hours).
 
 % start the server.
 % specify the initialization code (http_daemon) and call
