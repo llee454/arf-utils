@@ -90,7 +90,23 @@ function main_recordMealBlock (context, done) {
       .append ('<small> (KCal)</small>'))
     .append ($('<p><strong>Hours Till Next Meal: </strong></p>')
       .append (numHours)
-      .append ('<small> (Hrs)</small>'));
+      .append ('<small> (Hrs)</small>'))
+    .append ($('<div class="accordion_block">\
+      <div class="accordion_item_block">\
+        <div class="accordion_item_number">1</div>\
+        <div class="accordion_item_title">Calorie Search</div>\
+        <div class="accordion_item_body">\
+          <div id="search_interface" class="search_interface_block">search/search//0/10</div>\
+          <div id="search-results-section">\
+            <p>Enter the name of various foods to lookup their caloric content</p>\
+            <div class="search_form_block">search_interface</div>\
+            <p style="clear: both"><strong>Results</strong></p>\
+            <div class="search_results_block">search_interface</div>\
+          </div>\
+        </div>\
+      </div>\
+    </div>'));
+
 
   $.get (url,
     function (content) {
@@ -121,6 +137,7 @@ function main_recordMealBlock (context, done) {
     });
 
   var responseElement = $('<div></div>').attr ('id', 'prolog-meal-response');
+
 
   $(context.element)
     .addClass ('form')
@@ -239,9 +256,26 @@ function main_recordMealBlock (context, done) {
         .append ($('<div class="accordion_item_number">1</div>'))
         .append ($('<div class="accordion_item_title">Details</div>'))
         .append ($('<div class="accordion_item_body"></div>')
-          .append ($('<p><strong>Recommended Meal Size: </strong></p>'))
-          .append (mealSize)
-          .append ('<small> (KCal)</small>')
+          .append ($('<p><strong>Recommended Meal Size: </strong></p>')
+            .append (mealSize)
+            .append ('<small> (KCal)</small>'))
+          .append ('<hr/>')
+          .append ($('<h2>DASH Diet Guidelines</h2>\
+            <p><strong>Daily Calories:</strong> 2,000 KCal</p>\
+            <p><strong>Grains:</strong> 7-8 Services</p>\
+            <p><small>Examples: 1 slice bread, 1/2 cup rice or pasta</small></p>\
+            <p><strong>Vegetables:</strong> 4-5 Servings</p>\
+            <p><small>Examples: 1 cup leafy vegetables such as spinach, 1/2 cup cooked vegetables, 6oz vegetable juice</small></p>\
+            <p><strong>Fruits:</strong> 4-5 Servings</p>\
+            <p><small>Examples: 1 apple or orange, 1/4 cup dried fruit, 6oz fruit juice</small></p>\
+            <p><strong>Fat Free Dairy:</strong> 2-3 Servings</p>\
+            <p><small>Examples: 8oz milk, 1 cup yogurt, 1 1/2 oz cheese</small></p>\
+            <p><strong>Fish or Poultry:</strong> &lt;= 2 Servings</p>\
+            <p><small>Examples: 3oz</small></p>\
+            <p><strong>Oils and Fats:</strong> 2-3 Servings</p>\
+            <p><small>Examples: 1 teaspoon of olive oil</small></p>\
+            <p><strong>Nuts:</strong> 1 Serving</p>'))
+          .append ('<hr/>')
           .append ($('<p>Meal History (CSV): <a href="https://arf.larrylee.tech:5000/meals">meals.csv</a></p>')))));
 
   done (null, $(context.element));

@@ -36,3 +36,6 @@ assert(session('f970b3dc-bb26-11ea-ba2d-0a29365a243a','351553e4-b03b-11ea-960c-0
 assert(session('77616c6a-db74-11ea-ad1b-0a29365a243a','351553e4-b03b-11ea-960c-0a29365a243a',30,[])).
 assert(session('26a4e0f0-de39-11ea-9c63-0a29365a243a','351553e4-b03b-11ea-960c-0a29365a243a',30,[])).
 assert(session('2e41de68-183a-11eb-b57d-0a29365a243a','351553e4-b03b-11ea-960c-0a29365a243a',15,[])).
+assert(session('b3d1f33c-459f-11eb-ae1d-0a29365a243a','351553e4-b03b-11ea-960c-0a29365a243a',15,[])).
+assert(session('0c62e53a-4710-11eb-9db7-0a29365a243a','351553e4-b03b-11ea-960c-0a29365a243a',0,['11b391f2-b04c-11ea-96fa-0a29365a243a','13f9a79e-b04c-11ea-807a-0a29365a243a'])).
+assert(session('48ff0eae-4712-11eb-8dec-0a29365a243a','351553e4-b03b-11ea-960c-0a29365a243a',0,[])).

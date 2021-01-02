@@ -58,7 +58,7 @@
     <module name="coq"              enabled="false" url="modules/coq/coq.js"/>
     <module name="example"          enabled="false" url="modules/example/example.js"/>
     <module name="eqn"              enabled="false" url="modules/eqn/eqn.js"/>
-    <module name="faq"              enabled="false" url="modules/faq/faq.js"/>
+    <module name="faq"              enabled="true" url="modules/faq/faq.js"/>
     <module name="form"             enabled="false" url="modules/form/form.js"/>
     <module name="lightbox"         enabled="false" url="modules/lightbox/lightbox.js"/>
     <module name="menu"             enabled="true" url="modules/menu/menu.js"/>
