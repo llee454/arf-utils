@@ -19,12 +19,10 @@ bash_command(Command, Output) :-
   the given time overlaps with today.
 */
 timestampToday(Timestamp) :-
-  get_time(CurrTime),
-  stamp_date_time(CurrTime, CurrDateTime, 4),
-  stamp_date_time(Timestamp, DateTime, 4),
-  date_time_value(date, CurrDateTime, CurrDate),
-  date_time_value(date, DateTime, Date),
-  CurrDate = Date.
+  convertESTToUTC('0:00', StartTime),
+  convertESTToUTC('11:59:59 pm', StopTime),
+  StartTime =< Timestamp,
+  Timestamp =< StopTime.
 
 /*
   Accepts three arguments: -Hour, -Min, and -Sec; and returns a
