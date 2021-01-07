@@ -39,6 +39,25 @@ servingsCreate(MealID, serving(Type, Amount)) :-
   base:attributeCreate(MealID, AttributeID),
   assert_servings(AttributeID, Type, Amount).
 
+/*
+  Accepts three arguments: -Timestamp, an unix timestamp; -Calories, an
+  integer; and -Servings, a list of serving records; creates a meal
+  record, adds the record to the database, and returns the record ID,
+  +ID.
+*/
+mealCreate(Timestamp, Calories, Servings, ID) :-
+  base:eventCreate(Timestamp, ID),
+  assert_meal(ID),
+  base:attributeCreate(ID, AttributeID),
+  assert_calories(AttributeID, Calories),
+  maplist({ID}/[Serving]>>servingsCreate(ID, Serving), Servings).
+
+/*
+  Accepts two arguments: -Calories, an integer; and -Servings, a list
+  of serving records; create a meal record timestamp with the current
+  time, adds the record to the database, and returns the record ID,
+  +ID.
+*/
 mealCreate(Calories, Servings, ID) :-
   base:eventCreate(ID),
   assert_meal(ID),

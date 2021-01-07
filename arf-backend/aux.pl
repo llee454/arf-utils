@@ -47,7 +47,8 @@ getTimestamp(Hour, Min, Sec, Timestamp) :-
 
   Note: Timestamp is the number of seconds since Jan 1 1970.
   
-  Example: convertESTToUTC ('6:00', T).
+  Example: convertESTToUTC('6:00', T).
+  Example: convertESTToUTC('Jan 5 2020 6:00 am', T).
 */
 convertESTToUTC(LocalTime, Timestamp) :-
   string_concat("date +%s --date='TZ=\"EST\" ", LocalTime, CommandPrefix),
