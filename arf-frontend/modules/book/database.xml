@@ -14,6 +14,11 @@
           <li><code>findall(W,base:measurement(_,_,lbs,W,_), Ws), write(Ws), nl.</code></li>
           <li>See: <a href="https://github.com/llee454/arf-utils/tree/master/arf-backend">GitHub: ARF Utils</a> for functions</li>
         </ul>
+        <hr/>
+        <h2>Minor Pages</h2>
+        <ul>
+          <li><a href="#book_page_page/modules%2Fbook%2Fdatabase.xml/home/chess">Chess Checklist</a></li>
+        </ul>
       </div>
     ]]></body>
     <content>
@@ -53,6 +58,126 @@
         <body><![CDATA[
           <div class="section-content">
             <div class='main_record_study_block'></div>
+          </div>
+        ]]></body>
+        <searchable>false</searchable>
+      </page>
+      <page>
+        <name>chess</name>
+        <title><![CDATA[Chess Checklist]]></title>
+        <body><![CDATA[
+          <div id="chess-checklist">
+            <ol>
+              <li>
+                <strong>Identify Every Possible Opponent Move</strong>
+                <ol>
+                  <li><input type="radio"/>Bishops</li>
+                  <li><input type="radio"/>Knights</li>
+                  <li><input type="radio"/>Queen</li>
+                  <li><input type="radio"/>Rook</li>
+                  <li><input type="radio"/>Pawns</li>
+                  <li><input type="radio"/>King</li>
+                </ol>
+              </li>
+              <li><strong>What's Their Strongest Move?</strong></li>
+              <li>
+                <strong>Identify Every Possible Move</strong>
+                <ol>
+                  <li><input type="radio"/>Bishops</li>
+                  <li><input type="radio"/>Knights</li>
+                  <li><input type="radio"/>Queen</li>
+                  <li><input type="radio"/>Rook</li>
+                  <li><input type="radio"/>Pawns</li>
+                  <li><input type="radio"/>King</li>
+                </ol>
+              </li>
+              <li><strong>Which Side Has the Stronger Move?</strong></li>
+            </ol>
+            <h2>Quick Reference</h2>
+            <div class="accordion_block">
+              <div class="accordion_item_block">
+                <div class="accordion_item_number">1</div>
+                <div class="accordion_item_title">Defensive Options</div>
+                <div class="accordion_item_body">
+                  <ol>
+                    <li>Mate</li>
+                    <li>Capture the attacker</li>
+                    <li>Capture a piece of greater value</li>
+                    <li>Attack a piece of greater value</li>
+                    <li><small>Blunder: can they block and counter attack your attacker? (simultaneous attack)</small></li>
+                    <li>Pin/Skewer the attacker</li>
+                    <li>Defend the attacked piece</li>
+                    <li><small>Blunder: is the attacked piece a defender? (undercut)</small></li>
+                    <li><small>Blunder: is the defender already committed? (draw away)</small></li>
+                    <li>Move the attacked piece</li>
+                    <li>Interpose a piece</li>
+                    <li>Compensation</li>
+                  </ol>
+                </div>
+              </div>
+              <div class="accordion_item_block">
+                <div class="accordion_item_number">2</div>
+                <div class="accordion_item_title">Attack Options</div>
+                <div class="accordion_item_body">
+                  <ol>
+                    <li>Mate</li>
+                    <li>Capture</li>
+                    <li>Skewer</li>
+                    <li>Discovered attack while attacking a piece of greater value or undefended</li>
+                    <li>Attack a pinned piece</li>
+                    <li>Attack a trapped piece</li>
+                    <li>Check</li>
+                    <li>Pin a defender</li>
+                    <li>Fork</li>
+                    <li>Undercut (attack a defender)</li>
+                    <li>Block the defender of an attacked piece<br/>
+                      <small>(eg: interpose a pawn)</small>
+                    </li>
+                    <li>Draw away<br/>
+                      <small>capture a piece protected by an overloaded defender</small>
+                    </li>
+                    <li>Cut off all retreat squares</li>
+                    <li>Do not move a piece to a square on which it can be attacked by a piece of lesser value</li>
+                    <li>Pin</li>
+                    <li>Attack an undefended piece</li>
+                    <li>Overload<br/><small>attack 2 pieces protected by 1 defender</small></li>
+                    <li>Attack a piece of greater value</li>
+                    <li>Draw to<br/><small>capture a piece that draws a defender to create a weakness, eg: double pawns, open file</small></li>
+                    <li>Pile on attack</li>
+                    <li>Align<br/><small>threaten discovered attack</small></li>
+                    <li>Exchange a less for a more active piece</li>
+                    <li>Attack</li> 
+                    <li>Cover valued square</li>
+                    <li>Manuever<br/><small>Move toward outposts, open diagnals, open rank and files.</small></li>
+                  </ol>
+                </div>
+              </div>
+              <div class="accordion_item_block">
+                <div class="accordion_item_number">2</div>
+                <div class="accordion_item_title">Goals</div>
+                <div class="accordion_item_body">
+                  <strong>Opening</strong>
+                  <ol>
+                    <li>Control Squares in the Center</li>
+                    <li>Develop Minor Pieces</li>
+                    <li>Castle</li>
+                  </ol>
+                  <strong>Middle Game</strong>
+                  <ol>
+                    <li>Fend off Monor Piece Attacks
+                  </ol>
+                  <strong>Transition</strong>
+                  <ol>
+                    <li>Once Minor Piece Attacks Have lost Momentum</li>
+                    <li>Prepare to Advance Pawns</li>
+                    <li>Trade down to pieces that suite your pawn structure</li>
+                  </ol>
+                  <strong>Endgame</strong> 
+                  <ol>
+                  </ol>
+                </div>
+              </div>
+            </div>
           </div>
         ]]></body>
         <searchable>false</searchable>
