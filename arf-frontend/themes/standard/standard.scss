@@ -1,99 +1,202 @@
-/* eOffer eMod Online Styles */
-
 $base_theme_path: "../../themes/base";
 
 // Import Fonts
-@import "../../themes/base/fonts/opensans";
+@import "../../themes/base/fonts/opensans.scss";
 // Import 
 @import "../../themes/base/reset";
 // Import General Variables
 @import "../../themes/base/general-variables";
-// Import Guide Specific Variables
-@import "guide-variables";
+// Import theme variables
+@import "variables.scss";
 // Import Bourbon
 @import "../../themes/base/lib/bourbon/bourbon";
 // Import Neat
 @import "../../themes/base/lib/neat/neat";
-// Import FontAwesome
-@import "../../themes/base/lib/font-awesome/scss/font-awesome";
 // Import Mixins
 @import "../../themes/base/mixins";
 // Import Module Styles
 @import "../../themes/base/modules";
-// Import Feature Styles
-@import "../../themes/base/features";
 // Import General Styles
 @import "../../themes/base/general-theme"; 
 
-/* @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700); */
+$hero-height: 100vh;
 
-/* Hide the FPT Warnings in the eMod Resources section. */
-[data-template-id="book_section_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/emod-resources"] .fptWarning {
+@mixin absoluteCenter($left,$top) {
+  left: $left;
+  position: absolute;
+  top: $top;
+}
+
+@mixin centeredContentDims {
+  max-width: 900px;
+  width: 70%;
+
+  @include media(max-width $small-width) {
+    width: 80%;
+  }
+}
+
+@mixin centeredContent {
+  @include centeredContentDims;
+  margin: 0 auto;
+  padding: 0;
+}
+
+@mixin heroDims {
+  height: 100vh;
+}
+#header-content {
+  @include centeredContent;
+}
+.menu-item {
+  cursor: pointer;
+  &:hover {
+    font-weight: bold;
+  }
+}
+.header-menu-item {
+  color: white;
+  display: inline-block;
+  height: 100%;
+  padding: 10px 0;
+  text-align: center;
+  width: 130px;
+
+  &:first-of-type, &:last-of-type {
+    text-align: left;
+  }
+}
+#mobile-menu {
+  color: white;
   display: none;
+  position: relative;
 }
- 
-/* Hide/Show the relevant book menus based on the current page ID. */
-#sidr {
-  // hide menus by default.
-  .menu_contents {
+#mobile-menu-header {
+  cursor: pointer;
+  padding: 10px 20px;
+  text-align: center;
+
+  &:hover {
+    font-weight: bold;
+  }
+  &::before {
+    background-image: url("images/menu-icon.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    bottom: 2px;
+    content: "";
+    padding: 13px;
+    position: relative;
+    right: 10px;
+    vertical-align: middle;
+  }
+}
+#mobile-menu-content {
+  background-color: $text-gray;
+  display: none;
+  position: absolute;
+  width: 100%;
+  z-index: 20;
+}
+.mobile-menu-item {
+  color: white;
+  display: block;
+  padding: 10px 20px;
+  text-align: center;
+  width: 100%;
+}
+#main-content {
+  background-color: rgb(250,250,255);
+}
+.section-content {
+  @include centeredContent;
+  padding: 25px;
+
+  a {
+    color: #2b6fa1;
+  }
+  .section-header {
+    h1 {
+      margin: 0 auto;
+      max-width: 500px;
+      text-align: center;
+    }
+  }
+}
+input, button {
+  width: 100%;
+}
+.form {
+  input[type="text"] {
+    margin-bottom: 20px;
+  }
+  select, table {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+}
+.light-section {
+  padding: 12.5px 0;
+  .section-content {
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.26) 0px 1px 2px 0px;
+    .section-header {
+      h1 {
+        border-bottom: 1px solid $text-gray;
+      }
+    }
+  }
+}
+.dark-section {
+  background-color: $text-gray;
+  color: white;
+
+  h1, p {
+    color: white;
+  }
+  a {
+    color: #b1deff;
+  }
+  h1 {
+    border: none;
+  }
+  .section-content {
+    .section-header {
+      h1 {
+        border-bottom: 1px solid white;
+      }
+    }
+  }
+}
+@include media(max-width $small-width) {
+  #header-menu {
     display: none;
   }
-  // show the current matching menu.
-  .select_active {
-    .menu_contents {
-      display: block;
+  #mobile-menu {
+    display: block;
+  }
+  .section-content {
+    width: 95%;
+  }
+}
+#intro {
+  padding: 25px 0;
+}
+.section-body {
+  .table-container {
+    overflow-x: scroll;
+    table {
+      width: 100%;
     }
   }
 }
-.feedback {
-  border-left: solid 5px $eoffer-orange;
+input[type="checkbox"] {
+  height: 50px;
+  width: 50px;
 }
-.main_toggle {
-  $main_toggle_blue: #0990fe;
-
-  border: 1px solid #d2d2d2;
-  border-radius: 3px;
-  border-top: 9px solid $main_toggle_blue;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16);
-  padding: 20px 40px 40px;
-
-  .main_toggle_title {
-    color: $main_toggle_blue;
-    font-size: 18px;
-    font-weight: 600;
-  }
-  .main_toggle_option_header {
-    color: #525252;
-    font-size: 16px;
-    font-weight: 600;
-  }
-  strong {
-    color: #525252;
-    font-weight: 600;
-  }
-  label {
-    // align the option labels with the checkboxes.
-    strong {
-      line-height: 17px;
-      margin-left: 10px;
-      vertical-align: top;
-    }
-    // align the label p text with the option labels.
-    p {
-      margin-top: 0;
-      margin-left: 31px;
-      // set spacing separating the options.
-      margin-bottom: 22px;
-    }
-  }
-  input {
-    cursor: pointer;
-  }
-}
-
-// Hide the overview page from the section menu shown on the Post-Submission of an eMod Overview page.
-.book_page[data-template-id="book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/emod-resources/post-submission-of-an-emod/post-submission-of-an-emod-overview"] {
-  li[data-menu-id="book_page_page/modules%2Fbook%2Fdatabase.xml/eoffer_emod/emod-resources/post-submission-of-an-emod/post-submission-of-an-emod-overview"] {
-    display: none;
+#chess-checklist {
+  input[type="checkbox"] {
+    width: 50px;
+    height: 30px;
   }
 }

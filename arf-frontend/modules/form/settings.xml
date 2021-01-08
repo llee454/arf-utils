@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <settings>
   <forms>
-    <form>
-      <name>feedback_form</name>
-      <url>https://docs.google.com/forms/d/17UKIEy25QRioUbFe1uT9-AcU-RBu3-72OfG6VX22qbU</url>
-      <template>modules/form/templates/feedback_form.html</template>
-      <blockBots>false</blockBots>
-    </form>
   </forms>
 </settings>

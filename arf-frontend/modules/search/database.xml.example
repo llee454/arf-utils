@@ -5,16 +5,14 @@
     <lunrIndexURL>data/indices/search_index.json</lunrIndexURL>
     <setIds>
       <setId>book_search_source/data%2Fbooks.xml</setId>
-      <setId>video_library_search_source/eoffer</setId>
-      <setId>video_library_search_source/emod</setId>
+      <setId>video_library_search_source/example</setId>
     </setIds>
   </index>
   <index>
     <name>video_search</name>
     <lunrIndexURL>data/indices/videos_index.json</lunrIndexURL>
     <setIds>
-      <setId>video_library_search_source/eoffer</setId>
-      <setId>video_library_search_source/emod</setId>
+      <setId>video_library_search_source/example</setId>
     </setIds>
   </index>
 </database>
