@@ -40,10 +40,18 @@ servingsCreate(MealID, serving(Type, Amount)) :-
   assert_servings(AttributeID, Type, Amount).
 
 /*
-  Accepts three arguments: -Timestamp, an unix timestamp; -Calories, an
-  integer; and -Servings, a list of serving records; creates a meal
+  Accepts one argument: +ID, a servings ID; and deletes the referenced
+  serving.
+*/
+servingsDelete(ID) :-
+  base:attributeDelete(ID),
+  retract_servings(ID, _, _).
+
+/*
+  Accepts three arguments: +Timestamp, an unix timestamp; +Calories, an
+  integer; and +Servings, a list of serving records; creates a meal
   record, adds the record to the database, and returns the record ID,
-  +ID.
+  -ID.
 */
 mealCreate(Timestamp, Calories, Servings, ID) :-
   base:eventCreate(Timestamp, ID),
@@ -53,10 +61,10 @@ mealCreate(Timestamp, Calories, Servings, ID) :-
   maplist({ID}/[Serving]>>servingsCreate(ID, Serving), Servings).
 
 /*
-  Accepts two arguments: -Calories, an integer; and -Servings, a list
+  Accepts two arguments: +Calories, an integer; and +Servings, a list
   of serving records; create a meal record timestamp with the current
   time, adds the record to the database, and returns the record ID,
-  +ID.
+  -ID.
 */
 mealCreate(Calories, Servings, ID) :-
   base:eventCreate(ID),
@@ -64,6 +72,49 @@ mealCreate(Calories, Servings, ID) :-
   base:attributeCreate(ID, AttributeID),
   assert_calories(AttributeID, Calories),
   maplist({ID}/[Serving]>>servingsCreate(ID, Serving), Servings).
+
+/*
+  Accepts one argument: +ID, an attributeID; and returns true iff there
+  exists a calorie attribute that has the given ID.
+*/
+isCalorieAttribute(ID) :-
+  calories(ID, _).
+
+/*
+  Accepts one argument: +ID, an attribute ID; and returns true iff there
+  exists a servings attribute that has the given ID.
+*/
+isServingsAttribute(ID) :-
+  servings(ID, _, _).
+
+/*
+  Accepts one argument: +ID, an attribute ID; and deletes the
+  referenced calorie attribute.
+*/
+deleteCalorieAttribute(ID) :-
+  retract_calories(ID, _),
+  base:attributeDelete(ID).
+
+/*
+  Accepts one argument: +ID, an attribute ID; and deletes the
+  referenced servings attribute.
+*/
+deleteServingsAttribute(ID) :- true.
+  retract_servings(ID, _, _),
+  base:attributeDelete(ID).
+
+/*
+  WARNING: DOES NOT WORK!
+  Accepts one argument: +ID, a meal ID; and deletes the referenced meal.
+*/
+mealDelete(ID) :-
+  base:eventDelete(ID),
+  retract_meal(ID),
+  findall(AttributeID, base:attribute(AttributeID, ID), MealAttributeIDs),
+  include(isCalorieAttribute, MealAttributeIDs, CalAttributeIDs),
+  maplist(deleteCalorieAttribute, CalAttributeIDs),
+  include(isServingsAttribute, MealAttributeIDs, ServingsAttributeIDs),
+  maplist(deleteServingsAttribute, ServingsAttributeIDs).
 
 mealToday(MealID) :-
   base:event(MealID, Timestamp),

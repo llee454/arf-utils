@@ -95,12 +95,27 @@ entryCreate(ID) :-
   assert_entry(ID, 0, Timestamp).
 
 /*
+  Accepts one argument: +ID, an entry ID; and deletes the entry that
+  has the given ID.
+*/
+entryDelete(ID) :- 
+  retract_entry(ID, _, _).
+
+/*
   Accepts one argument: +Name, a string; creates an entity that
   has the given name; and returns -ID, the ID of the created entity.
 */
 entityCreate(Name, ID) :-
   entryCreate(ID),
   assert_entity(ID, Name).
+
+/*
+  Accepts one argument: +ID, an entity ID; and deletes the referenced
+  entity.
+*/
+entityDelete(ID) :-
+  entryDelete(ID),
+  retract_entity(ID, _).
 
 /*
   Creates an event and sets its timestamp to the moment when this
@@ -119,6 +134,14 @@ eventCreate(ID) :-
 eventCreate(Timestamp, ID) :-
   entryCreate(ID),
   assert_event(ID, Timestamp).
+
+/*
+  Accepts one argument: +ID, an event ID; and deletes the referenced
+  event.
+*/
+eventDelete(ID) :-
+  entryDelete(ID),
+  retract_event(ID, _).
 
 /*
   Accepts one argument: +Event, an event; and returns the date at
@@ -161,12 +184,35 @@ attributeCreate(SubjectID, ID) :-
   assert_attribute(ID, SubjectID).
 
 /*
+  Accepts one argument: +ID, an attribute ID; and deletes the
+  referenced attribute.
+*/
+attributeDelete(ID) :-
+  entryDelete(ID),
+  retract_attribute(ID, _).
+
+/*
+  Accepts one argument: +ID, an attribute ID list; and deletes the
+  referenced attributes.
+*/
+attributesDelete(IDs) :-
+  maplist(attributeDelete, IDs).
+
+/*
   Accepts two arguments: +ActorID and +EventID, and creates an
   event with the given ID and attributes the action to the actor.
 */
 actionCreate(ActorID, EventID) :-
   eventCreate(EventID),
   assert_action(EventID, ActorID).
+
+/*
+  Accepts one argument: +ID, an action ID; and deletes the referenced
+  action.
+*/
+actionDelete(ID) :-
+  eventDelete(ID),
+  retract_action(ID, _).
 
 /*
   Accepts one argument: +Action, an action; and returns -EventID,
@@ -177,8 +223,14 @@ actionEventID(Action, EventID) :- Action = action(EventID, _).
 /*
   Accepts one argument: +Action, an action; and returns -ActorID,
   the actor ID of the given action.
-*/
+*/
 actionActorID(Action, ActorID) :- Action = action(_, ActorID).
+
+/*
+  Accepts one argument; action, an action term; and returns the
+  time at which the action occured/began.
+*/
+actionTimestamp(action(EventID, _), Timestamp) :- event(EventID, Timestamp).
 
 /*
   Accepts five arguments: +SourceID and +ofID, entity IDs; +Unit, an
@@ -190,10 +242,27 @@ measurementCreate(SourceID, OfID, Unit, Value, Precision, ID) :-
   actionCreate(SourceID, ID),
   assert_measurement(ID, OfID, Unit, Value, Precision).
 
+/*
+  Accepts one argument: +ID, a measurement ID; and deletes the
+  referenced measurement.
+*/
+measurementDelete(ID) :-
+  actionDelete(ID),
+  retract_measurement(ID, _, _, _, _).
+
 durationCreate(SourceID, EventID, Unit, Value, Precision, ID) :-
   attributeCreate(EventID, ID),
   assert_duration(ID),
   measurementCreate(SourceID, ID, Unit, Value, Precision, _).
+
+/*
+  Accepts one argument: +ID, a duration ID; and deletes the referenced
+  duration.
+*/
+durationDelete(ID) :-
+  attributeDelete(ID),
+  retract_duration(ID),
+  measurementDelete(ID).
 
 activityCreate(ActorID, Unit, Duration, DurationPrec, ID) :-
   base:entity(ActorID, "me"), !,
@@ -202,7 +271,10 @@ activityCreate(ActorID, Unit, Duration, DurationPrec, ID) :-
   durationCreate(ActorID, ID, Unit, Duration, DurationPrec, _).
 
 /*
-  Accepts one argument; action, an action term; and returns the
-  time at which the action occured/began.
+  Accepts one argument: +ID, an activity ID; and deletes the
+  referenced activity.
 */
-actionTimestamp(action(EventID, _), Timestamp) :- event(EventID, Timestamp).
+activityDelete(ID) :-
+  actionDelete(ID),
+  retract_activity(ID),
+  durationDelete(ID).
