@@ -77,8 +77,7 @@ runHandler(Request) :-
   format('Access-Control-Allow-Origin: *~n'),
   format('Content-type: text/plain~n~n'),
   term_string(Command, CommandString),
-  call(Command),
-  format('Done').
+  call(Command).
 
 % process export requests.
 mealsHandler(_) :-

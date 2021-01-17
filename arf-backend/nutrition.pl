@@ -99,7 +99,7 @@ deleteCalorieAttribute(ID) :-
   Accepts one argument: +ID, an attribute ID; and deletes the
   referenced servings attribute.
 */
-deleteServingsAttribute(ID) :- true.
+deleteServingsAttribute(ID) :-
   retract_servings(ID, _, _),
   base:attributeDelete(ID).
 

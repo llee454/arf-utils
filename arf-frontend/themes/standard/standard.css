@@ -699,33 +699,33 @@ table.glossary tbody tr td:first-child {
     .leaf_nav {
       height: auto; } }
 
-.previous_lesson .menu_link {
+.previous_page .menu_link {
   background: url("images/previous-arrow.png") no-repeat 0px 50%;
   display: block;
   float: left;
   padding-left: 30px; }
-  .previous_lesson .menu_link:before {
+  .previous_page .menu_link:before {
     color: #b2b2b2;
-    content: "Previous Lesson";
+    content: "Previous";
     display: block; }
   @media screen and (max-width: 950px) {
-    .previous_lesson .menu_link {
+    .previous_page .menu_link {
       background: none;
       float: none;
       padding: 0px; } }
 
-.next_lesson .menu_link {
+.next_page .menu_link {
   background: url("images/next-arrow.png") no-repeat 100% 50%;
   display: block;
   float: right;
   padding-right: 30px;
   text-align: right; }
-  .next_lesson .menu_link:before {
+  .next_page .menu_link:before {
     color: #b2b2b2;
-    content: "Next Lesson";
+    content: "Next";
     display: block; }
   @media screen and (max-width: 950px) {
-    .next_lesson .menu_link {
+    .next_page .menu_link {
       background: none;
       float: none;
       padding: 10px 0px 0px 0px;
