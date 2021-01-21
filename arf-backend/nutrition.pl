@@ -116,6 +116,14 @@ mealDelete(ID) :-
   include(isServingsAttribute, MealAttributeIDs, ServingsAttributeIDs),
   maplist(deleteServingsAttribute, ServingsAttributeIDs).
 
+/*
+  Accepts two arguments: +Date, a date string; and +MealID, a meal ID;
+  and returns true iff the referenced meal occured on the given date.
+*/
+mealOn(Date, MealID) :-
+  base:event(MealID, Timestamp),
+  aux:onDate(Date, Timestamp).
+
 mealToday(MealID) :-
   base:event(MealID, Timestamp),
   aux:timestampToday(Timestamp).
@@ -137,6 +145,14 @@ meals(IDs) :-
 mealsToday(IDs) :-
   meals(AllIDs),
   include(mealToday, AllIDs, IDs).
+
+/*
+  Accepts one argument: +Date, a date string; and returns -IDs, a list
+  of meal IDs that reference the meals eaten on the given date.
+*/
+mealsOn(Date, IDs) :-
+  meals(AllIDs),
+  include({Date}/[ID]>>mealOn(Date, ID), AllIDs, IDs).
 
 /*
   Returns -Calories, the number of calories consumed today.

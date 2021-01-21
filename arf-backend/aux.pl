@@ -15,6 +15,21 @@ bash_command(Command, Output) :-
   close(Out).
 
 /*
+  Accepts two arguments: `+Date`, a string that represents a date; and
+  `+Timestamp`, a timestamp; and returns true iff `Timestamp` occured
+  on `Date`.
+
+  Example onDate('Jan 1 2021', 123456678.0).
+*/
+onDate(Date, Timestamp) :-
+  string_concat(Date, ' 0:00', StartTimeStr),
+  string_concat(Date, ' 11:59:59 pm', StopTimeStr),
+  convertESTToUTC(StartTimeStr, StartTime),
+  convertESTToUTC(StopTimeStr, StopTime),
+  StartTime =< Timestamp,
+  Timestamp =< StopTime.
+
+/*
   Accepts one argument: +Timestamp, a timestamp; and succeeds iff
   the given time overlaps with today.
 */
