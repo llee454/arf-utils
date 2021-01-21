@@ -164,7 +164,7 @@ function main_recordMealBlock (context, done) {
       .text ('Vegetable servings:'))
     .append ($('<input></input>')
       .attr ('id', 'prolog-meal-vegetables-input')
-      .attr ('name', 'dairy')
+      .attr ('name', 'vegetables')
       .attr ('value', '0')
       .attr ('type', 'text'))
 
