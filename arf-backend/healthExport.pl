@@ -37,4 +37,4 @@ weightRecords(WeightRecords) :-
 */
 writeWeightRecords(Filename) :-
   weightRecords(WeightRecords),
-  csv_write_file(Filename, WeightRecords).
+  csv_write_file(Filename, [weight_record('Entry ID', 'Weight', 'Units', 'Precision', 'Time', 'Year', 'DOY')|WeightRecords]).

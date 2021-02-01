@@ -81,10 +81,12 @@ runHandler(Request) :-
 
 % process export requests.
 mealsHandler(_) :-
+  format('Access-Control-Allow-Origin: *~n'),
   nutritionExport:writeMealRecords('exports/meals.csv'),
   http_reply_file('exports/meals.csv', [cache(false)], []).
 
 weightHandler(_) :-
+  format('Access-Control-Allow-Origin: *~n'),
   healthExport:writeWeightRecords('exports/weight.csv'),
   http_reply_file('exports/weight.csv', [cache(false)], []).
 
