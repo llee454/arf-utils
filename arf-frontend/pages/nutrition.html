@@ -1,0 +1,123 @@
+<script type="text/javascript">
+  $('#prolog-meal-send')
+    .click (function () {
+      var servingsString = [
+          'prolog-meal-grain-input',
+          'prolog-meal-vegetables-input',
+          'prolog-meal-fruit-input',
+          'prolog-meal-dairy-input',
+          'prolog-meal-meat-input',
+          'prolog-meal-nuts-input',
+          'prolog-meal-sugar-input',
+          'prolog-meal-fat-input'
+        ].map (function (id) {
+          var value = $('#' + id).val ();
+          var label = $('#' + id).attr ('name');
+          return 'serving(' + label + ', ' + value + ')';
+        }).join (', ');
+
+      var url = 'https://arf.larrylee.tech:5000/run?command=nutrition:mealCreate(' + $('#prolog-meal-calories-input').val () + ', [' + servingsString + '], _).';
+      alert (url);
+      $.get (url,
+        function (content) {
+          alert ('success: "' + content + '"');
+        }, 'text').fail (function () {
+          alert ('failed');
+        });
+    });
+</script>
+<div id='nutrition-content' class='section-content'>
+  <p>
+    <strong>Calories eaten today: </strong>
+    <span class='main_get_block' data-url='run?command=nutrition:caloriesToday(Calories), write(Calories), nl.'>loading...</span>
+    <small> (KCal)</small>
+  </p>
+  <p>
+    <strong>Accumulated Calories: </strong>
+    <span class='main_get_block' data-url='remaining_cals'>loading...</span>
+    <small> (KCal)</small>
+  </p>
+  <p>
+    <strong>Hours Till Next Meal: </strong>
+    <span class='main_get_block' data-url='hours_till_next_meal'>loading...</span>
+    <small> (Hrs)</small>
+  </p>
+  <div class="accordion_block">
+    <div class="accordion_item_block">
+      <div class="accordion_item_number">1</div>
+      <div class="accordion_item_title">Calorie Search</div>
+      <div class="accordion_item_body">
+        <div id="search_interface" class="search_interface_block">search/search//0/10</div>
+        <div id="search-results-section">
+          <p>Enter the name of various foods to lookup their caloric content</p>
+          <div class="search_form_block">search_interface</div>
+          <p style="clear: both"><strong>Results</strong></p>
+          <div class="search_results_block">search_interface</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id='nutrition-form' class='form'>
+    <label for='calories'>Calories:</label>
+    <input id='prolog-meal-calories-input' name='calories' value='0' type='text'/>
+    <label for='grain'>Grain servings:</label>
+    <input id='prolog-meal-grain-input' name='grain' value='0' type='text'/>
+    <label for='vegetables'>Vegetable servings:</label>
+    <input id='prolog-meal-vegetables-input' name='vegetables' value='0' type='text'/>
+    <label for='fruit'>Fruit servings:</label>
+    <input id='prolog-meal-fruit-input' name='fruit' value='0' type='text'/>
+    <label for='dairy'>Dairy servings:</label>
+    <input id='prolog-meal-dairy-input' name='dairy' value='0' type='text'/>
+    <label for='meat'>Meat servings:</label>
+    <input id='prolog-meal-meat-input' name='meat' value='0' type='text'/>
+    <label for='nuts'>Nuts servings:</label>
+    <input id='prolog-meal-nuts-input' name='nuts' value='0' type='text'/>
+    <label for='sugar'>Sugar servings:</label>
+    <input id='prolog-meal-sugar-input' name='sugar' value='0' type='text'/>
+    <label for='fat'>Fats servings:</label>
+    <input id='prolog-meal-fat-input' name='fat' value='0' type='text'/>
+    <button id='prolog-meal-send'>Send</button>
+  </div>
+  <div class="accordion_block">
+    <div class="accordion_item_block">
+      <div class="accordion_item_number">1</div>
+      <div class="accordion_item_title">Details</div>
+      <div class="accordion_item_body">
+        <strong>Recommended Meal Size: </strong>
+        <span class='main_get_block' data-url='meal_size'>Loading...</span>
+        <small> (KCal)</small>
+        <hr/>
+        <h2>DASH Diet Guidelines</h2>
+        <p><strong>Daily Calories:</strong> 2,000 KCal</p>
+        <p><strong>Grains:</strong> 7-8 Services</p>
+        <p><small>Examples: 1 slice bread, 1/2 cup rice or pasta</small></p>
+        <p><strong>Vegetables:</strong> 4-5 Servings</p>
+        <p><small>Examples: 1 cup leafy vegetables such as spinach, 1/2 cup cooked vegetables, 6oz vegetable juice</small></p>
+        <p><strong>Fruits:</strong> 4-5 Servings</p>
+        <p><small>Examples: 1 apple or orange, 1/4 cup dried fruit, 6oz fruit juice</small></p>
+        <p><strong>Fat Free Dairy:</strong> 2-3 Servings</p>
+        <p><small>Examples: 8oz milk, 1 cup yogurt, 1 1/2 oz cheese</small></p>
+        <p><strong>Fish or Poultry:</strong> &lt;= 2 Servings</p>
+        <p><small>Examples: 3oz</small></p>
+        <p><strong>Oils and Fats:</strong> 2-3 Servings</p>
+        <p><small>Examples: 1 teaspoon of olive oil</small></p>
+        <p><strong>Nuts:</strong> 1 Serving</p>
+        <hr/>
+        <p><strong>Meal History (CSV):</strong> <a href="https://arf.larrylee.tech:5000/meals">meals.csv</a></p>
+        <hr/>
+        <p><strong>Weight History</strong></p>
+        <hr/>
+        <div class='quote_block'>
+          <div class='graph_points_block'>
+            <div class='data_file_name'>https://arf.larrylee.tech:5000/weight</div>
+            <div class='container_id'>weight_plot</div>
+            <div class='x_field_name'>Time</div>
+            <div class='y_field_name'>Weight</div>
+            <div class='x_axis_label'>Date</div>
+            <div class='y_axis_label'>Weight</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

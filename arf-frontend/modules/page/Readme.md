@@ -691,6 +691,9 @@ function page_setPageElement (containerElement, id, done) {
 
 unittest ('page_setPageElement',
   {
+    globals: [
+      { variableName: 'page_HANDLERS', value: new page_HandlerStore () }
+    ],
     elements: [
       $('<div class="page_element_parent">\
          <div class="page_element"></div>\
@@ -704,6 +707,8 @@ unittest ('page_setPageElement',
     assert.expect (3);
 
     var done0 = assert.async ();
+    page_HANDLERS.add ('example_page', 'modules/example/templates/page.html');
+
     page_setPageElement (elements [0], 'example_page', function (error, pageElement) {
       assert.ok ($('.page_element_parent .example_block').length > 0, 'page_setPageElement replaces the contents of containerElement with the page corresponding to the given ID.');
       done0 ();
@@ -931,8 +936,8 @@ The default error page template can be found here: [templates/error_page.html.de
 Generating Source Files
 -----------------------
 
-You can generate the Page module's source files using [Literate Programming](https://github.com/jostylr/literate-programming), simply execute:
-`literate-programming Readme.md`
+You can generate the Page module's source files using [Literate Programming](https://github.com/jostylr/litpro), simply execute:
+`litpro Readme.md`
 from the command line.
 
 #### Page.js

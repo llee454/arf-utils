@@ -15,14 +15,14 @@ Displaying Test Results
 -----------------------
 In order to display the tests' output, you must insert two div elements with the ids of "qunit" and "qunit-fixture", respectively. They must be explicitly embedded in index.html, NOT inserted with a template, so that they exist when QUnit starts.
 
-Paste the following lines into guides/eoffer/index.html, inside of the element with the id of "main_content":
+Paste the following lines into index.html, inside of the element with the id of "main_content":
 
 ```html
 <div id="qunit"></div>
 <div id="qunit-fixture"></div>
 ```
 
-guides/eoffer/index.html also needs to load the QUnit library, and ensure that QUnit's autostart value is set to false. To do so, paste the following inside of the head element, below the other script elements:
+index.html also needs to load the QUnit library, and ensure that QUnit's autostart value is set to false. To do so, paste the following inside of the head element, below the other script elements:
 ```javascript
 <script src="lib/qunit/qunit.js"></script>
 <script>

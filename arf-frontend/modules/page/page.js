@@ -607,6 +607,9 @@ function page_setPageElement (containerElement, id, done) {
 
 unittest ('page_setPageElement',
   {
+    globals: [
+      { variableName: 'page_HANDLERS', value: new page_HandlerStore () }
+    ],
     elements: [
       $('<div class="page_element_parent">\
          <div class="page_element"></div>\
@@ -620,6 +623,8 @@ unittest ('page_setPageElement',
     assert.expect (3);
 
     var done0 = assert.async ();
+    page_HANDLERS.add ('example_page', 'modules/example/templates/page.html');
+
     page_setPageElement (elements [0], 'example_page', function (error, pageElement) {
       assert.ok ($('.page_element_parent .example_block').length > 0, 'page_setPageElement replaces the contents of containerElement with the page corresponding to the given ID.');
       done0 ();

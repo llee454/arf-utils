@@ -41,6 +41,8 @@
     not they have been enabled or disabled.
   -->
   <modules>
+    <module name="template"         enabled="true"  url="modules/template/template.js"/>
+
     <!-- level 1 modules -->
     <module name="block"            enabled="true"  url="modules/block/block.js"/>
     <module name="page"             enabled="true"  url="modules/page/page.js"/>
@@ -56,7 +58,7 @@
     <module name="book"             enabled="true" url="modules/book/book.js"/>
     <module name="bxslider"         enabled="false" url="modules/bxslider/bxslider.js"/>
     <module name="coq"              enabled="false" url="modules/coq/coq.js"/>
-    <module name="example"          enabled="false" url="modules/example/example.js"/>
+    <module name="example"          enabled="true" url="modules/example/example.js"/>
     <module name="eqn"              enabled="false" url="modules/eqn/eqn.js"/>
     <module name="faq"              enabled="true" url="modules/faq/faq.js"/>
     <module name="form"             enabled="false" url="modules/form/form.js"/>
@@ -68,7 +70,6 @@
     <module name="rate"             enabled="false" url="modules/rate/rate.js"/>
     <module name="select"           enabled="false" url="modules/select/select.js"/>
     <module name="sidr"             enabled="false" url="modules/sidr/sidr.js"/>
-    <module name="template"         enabled="true"  url="modules/template/template.js"/>
     <module name="video"            enabled="false" url="modules/video/video.js"/>
     <module name="video_library"    enabled="false" url="modules/video_library/video_library.js"/>
   </modules>

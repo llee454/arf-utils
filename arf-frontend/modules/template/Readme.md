@@ -1,11 +1,11 @@
 Template Module
 ===============
 
-The Template module allows other modules to define and nested templates.
+The Template module allows other modules to define and nest templates.
 
 ```javascript
 /*
-  The Template module allows other modules to define and nested templates.
+  The Template module allows other modules to define and nest templates.
 */
 
 // Declares the QUnit test module.
@@ -14,7 +14,7 @@ QUnit.module ('Template');
 
 Example Usage
 -------------
-The Menu module defineds the Menu class, which represents menus within Lucidity. Each Menu object must be added to the menu_MENUS array, which maintains a record of all registered menus. Once a Menu object has been registered, it can then be displayed using the Menu blocks listed below. The following presents an example of a Menu object:
+The Menu module defines the Menu class, which represents menus within Lucidity. Each Menu object must be added to the menu_MENUS array, which maintains a record of all registered menus. Once a Menu object has been registered, it can then be displayed using the Menu blocks listed below. The following presents an example of a Menu object:
 
 ```javascript
 /*

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <books>
   <book>
-    <name>home</name>
+    <name>arf</name>
     <title><![CDATA[ARF Data Utilities]]></title>
     <body><![CDATA[
       <div class="section-content">
@@ -22,16 +22,12 @@
       </div>
     ]]></body>
     <content>
-      <page>
+      <template>
         <name>nutrition</name>
         <title><![CDATA[Nutrition]]></title>
-        <body><![CDATA[
-          <div class="section-content">
-            <div class='main_record_meal_block'></div>
-          </div>
-        ]]></body>
+        <path>pages/nutrition.html</path>
         <searchable>false</searchable>
-      </page>
+      </template>
       <page>
         <name>health</name>
         <title><![CDATA[Health]]></title>
