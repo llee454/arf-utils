@@ -64,6 +64,7 @@
 :- http_handler(root(remaining_cals), remainingCalsHandler, []).
 :- http_handler(root(meal_size), mealSizeHandler, []).
 :- http_handler(root(hours_till_next_meal), nextMealHandler, []).
+:- http_handler(root(daily_cals), dailyCalsHandler, []).
 
 % process status requests.
 statusHandler(_Request) :-
@@ -84,6 +85,11 @@ mealsHandler(_) :-
   format('Access-Control-Allow-Origin: *~n'),
   nutritionExport:writeMealRecords('exports/meals.csv'),
   http_reply_file('exports/meals.csv', [cache(false)], []).
+
+dailyCalsHandler(_) :-
+  format('Access-Control-Allow-Origin: *~n'),
+  nutritionExport:writeDailyCaloriesRecords('exports/daily_cals.csv'),
+  http_reply_file('exports/daily_cals.csv', [cache(false)], []).
 
 weightHandler(_) :-
   format('Access-Control-Allow-Origin: *~n'),

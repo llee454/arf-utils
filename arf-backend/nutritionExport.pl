@@ -20,7 +20,6 @@ mealRecord(ID, meal_record(ID, Cals, Time, Year, DOY, Hour)) :-
   format_time(atom(Hour), '%H', Date),
   base:attribute(AttribID, ID),
   nutrition:calories(AttribID, Cals).
-  
 
 /*
   - MealRecords
@@ -29,6 +28,16 @@ mealRecords(MealRecords) :-
   nutrition:meals(AllIDs),
   convlist(mealRecord, AllIDs, MealRecords).
 
+dailyCaloriesRecord([Timestamp, Calories], record(Year, DOY, Cals)) :-
+  stamp_date_time(Timestamp, Date, 'UTC'),
+  format_time(atom(Year), '%Y', Date, posix),
+  format_time(atom(DOY), '%j', Date, posix),
+  Cals = Calories.
+
+dailyCaloriesRecords(Records) :-
+  nutrition:caloriesByDate(Result),
+  convlist(dailyCaloriesRecord, Result, Records).
+
 /*
   + Filename
 
@@ -36,4 +45,8 @@ mealRecords(MealRecords) :-
 */
 writeMealRecords(Filename) :-
   mealRecords(MealRecords),
-  csv_write_file(Filename, MealRecords).
+  csv_write_file(Filename, [meal_record('ID', 'Cals', 'Time', 'Year', 'DOY', 'Hour')|MealRecords]).
+
+writeDailyCaloriesRecords(Filename) :-
+  dailyCaloriesRecords(Records),
+  csv_write_file(Filename, [record('Year', 'DOY', 'Cals')|Records]).

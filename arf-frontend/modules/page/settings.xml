@@ -12,7 +12,7 @@
     loading anything and call the Page Load
     event handlers.
   -->
-  <default_page_id>book_book_page/modules%2Fbook%2Fdatabase.xml/home</default_page_id>
+  <default_page_id>book_book_page/modules%2Fbook%2Fdatabase.xml/arf</default_page_id>
 
   <!--
     If a page handler returns an error while

@@ -23,7 +23,7 @@ pointsDiagram = function (
     var parseDate = d3.timeParse("%Y-%m-%d %I:%M:%S");
 
     var points = data
-      .slice (-5)
+      .slice (-7)
       .map (p => {
         return {
           x: parseDate (p [x_field_name]),

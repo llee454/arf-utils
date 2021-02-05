@@ -133,11 +133,30 @@ mealToday(MealID) :-
 */
 mealCalories(ID, Calories) :-
   base:attribute(AttributeID, ID),
-  calories(AttributeID, Calories).
+  calories(AttributeID, Calories), !.
+
+/*
+  Accepts one argument: +ID, a meal ID; and returns a timestamp
+  -Timestamp recording when the referenced meal occured. 
+*/
+mealTimestamp(ID, Timestamp) :-
+  base:event(ID, Timestamp).
+
+/*
+  Accepts an +ID and returns true iff the ID references a valid
+  meal entry.
+
+  Note: This definition is temporary. It exists only to filter out
+  damaged and/or incomplete meal records. 
+*/
+validMeal(ID) :-
+  meal(ID),
+  base:entry(ID, _, _),
+  base:event(ID, _).
 
 /* -IDs */
 meals(IDs) :-
-  findall(ID, meal(ID), IDs).
+  findall(ID, validMeal(ID), IDs).
 
 /*
   Returns -IDs, a list of meal IDs that represent the meals eaten today.
@@ -153,6 +172,31 @@ mealsToday(IDs) :-
 mealsOn(Date, IDs) :-
   meals(AllIDs),
   include({Date}/[ID]>>mealOn(Date, ID), AllIDs, IDs).
+
+caloriesByDateAux(Timestamp0, Calories0, [], [[Timestamp0, Calories0]]) :- !.
+caloriesByDateAux(Timestamp0, Calories0, [[Timestamp1, Calories1]|Xs], [[Timestamp0, Calories0]|[[Timestamp1, Calories1]|Xs]]) :-
+  Timestamp0 < Timestamp1, !.
+caloriesByDateAux(Timestamp0, Calories0, [[Timestamp1, Calories1]|Xs], [[Timestamp1, Calories]|Xs]) :-
+  Timestamp0 =:= Timestamp1, !,
+  Calories is Calories0 + Calories1.
+caloriesByDateAux(Timestamp0, Calories0, [[Timestamp1, Calories1]|Xs], Res) :-
+  Timestamp1 < Timestamp0, !,
+  caloriesByDateAux(Timestamp0, Calories0, Xs, Res0), !,
+  Res = [[Timestamp1, Calories1]|Res0].
+
+/*
+  Returns a list consisting of entries of the form
+  [Timestamp, Calories], where every day for which we have meals is
+  recorded along with the number of calories consumed on that day.
+*/
+caloriesByDate(Result) :-
+  meals(IDs),
+  foldl({}/[ID, Acc, Res]>>(
+    mealTimestamp(ID, Timestamp),
+    mealCalories(ID, Calories),
+    aux:dateTimestamp(Timestamp, DateTimestamp),
+    caloriesByDateAux(DateTimestamp, Calories, Acc, Res)),
+    IDs, [], Result).
 
 /*
   Returns -Calories, the number of calories consumed today.
