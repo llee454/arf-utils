@@ -1,31 +1,3 @@
-<script type="text/javascript">
-  $('#prolog-meal-send')
-    .click (function () {
-      var servingsString = [
-          'prolog-meal-grain-input',
-          'prolog-meal-vegetables-input',
-          'prolog-meal-fruit-input',
-          'prolog-meal-dairy-input',
-          'prolog-meal-meat-input',
-          'prolog-meal-nuts-input',
-          'prolog-meal-sugar-input',
-          'prolog-meal-fat-input'
-        ].map (function (id) {
-          var value = $('#' + id).val ();
-          var label = $('#' + id).attr ('name');
-          return 'serving(' + label + ', ' + value + ')';
-        }).join (', ');
-
-      var url = 'https://arf.larrylee.tech:5000/run?command=nutrition:mealCreate(' + $('#prolog-meal-calories-input').val () + ', [' + servingsString + '], _).';
-      alert (url);
-      $.get (url,
-        function (content) {
-          alert ('success: "' + content + '"');
-        }, 'text').fail (function () {
-          alert ('failed');
-        });
-    });
-</script>
 <div id='nutrition-content' class='section-content'>
   <p>
     <strong>Calories eaten today: </strong>
@@ -54,6 +26,7 @@
           <p style="clear: both"><strong>Results</strong></p>
           <div class="search_results_block">search_interface</div>
         </div>
+        <p><a id='nutritionx-link' href='https://www.nutritionix.com'><strong>Search on NutritionX</strong></a></p>
       </div>
     </div>
   </div>
@@ -83,9 +56,11 @@
       <div class="accordion_item_number">1</div>
       <div class="accordion_item_title">Details</div>
       <div class="accordion_item_body">
-        <strong>Recommended Meal Size: </strong>
-        <span class='main_get_block' data-url='meal_size'>Loading...</span>
-        <small> (KCal)</small>
+        <p>
+          <strong>Recommended Meal Size: </strong>
+          <span class='main_get_block' data-url='meal_size'>Loading...</span>
+          <small> (KCal)</small>
+        </p>
         <hr/>
         <h2>DASH Diet Guidelines</h2>
         <p><strong>Daily Calories:</strong> 2,000 KCal</p>
@@ -105,19 +80,53 @@
         <hr/>
         <p><strong>Meal History (CSV):</strong> <a href="https://arf.larrylee.tech:5000/meals">meals.csv</a></p>
         <hr/>
-        <p><strong>Weight History</strong></p>
+        <p><strong>Daily Caloric Intake History</strong></p>
         <hr/>
+        <br/>
         <div class='quote_block'>
           <div class='graph_points_block'>
-            <div class='data_file_name'>https://arf.larrylee.tech:5000/weight</div>
-            <div class='container_id'>weight_plot</div>
-            <div class='x_field_name'>Time</div>
-            <div class='y_field_name'>Weight</div>
-            <div class='x_axis_label'>Date</div>
-            <div class='y_axis_label'>Weight</div>
+            <div class='data_file_name'>https://arf.larrylee.tech:5000/daily_cals</div>
+            <div class='container_id'>daily_cals_plot</div>
+            <div class='x_field_name'>Date</div>
+            <div class='y_field_name'>Cals</div>
+            <div class='x_axis_label'>Time</div>
+            <div class='y_axis_label'>Daily Cals (KCal)</div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  $('#prolog-meal-send')
+    .click (function () {
+      var servingsString = [
+          'prolog-meal-grain-input',
+          'prolog-meal-vegetables-input',
+          'prolog-meal-fruit-input',
+          'prolog-meal-dairy-input',
+          'prolog-meal-meat-input',
+          'prolog-meal-nuts-input',
+          'prolog-meal-sugar-input',
+          'prolog-meal-fat-input'
+        ].map (function (id) {
+          var value = $('#' + id).val ();
+          var label = $('#' + id).attr ('name');
+          return 'serving(' + label + ', ' + value + ')';
+        }).join (', ');
+
+      var url = 'https://arf.larrylee.tech:5000/run?command=nutrition:mealCreate(' + $('#prolog-meal-calories-input').val () + ', [' + servingsString + '], _).';
+      alert (url);
+      $.get (url,
+        function (content) {
+          alert ('success: "' + content + '"');
+        }, 'text').fail (function () {
+          alert ('failed');
+        });
+    });
+
+  $('#nutritionx-link').click (function () {
+    var interface = search_INTERFACES ['search_interface'];
+    $('#nutritionx-link').attr ('href', 'https://www.nutritionix.com/search?q=' + interface.query);
+  });
+</script>

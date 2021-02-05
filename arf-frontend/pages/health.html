@@ -1,0 +1,100 @@
+<script type="text/javascript">
+  var metrics = [
+    {
+      name: "weight",
+      label: "Weight (lb):",
+      query: value => 'health:weightMeasurementCreate(' + value + ', 0.2, _)'
+    },
+    {
+      name: "waist",
+      label: "Waist Circumference (in) (+/- 1/4in):",
+      query: value => 'health:waistCircumferenceMeasurementCreate(' + value + ', 0.25, _)'
+    },
+    {
+      name: "bicep",
+      label: "Bicep Circumference (in) (+/- 1/8in):",
+      query: value => 'health:bicepCircumferenceMeasurementCreate(' + value + ', 0.125, _)'
+    },
+    {
+      name: "systolic",
+      label: "Systolic Blood Pressure (mmHg):",
+      query: value => 'health:bloodPressureSystolicMeasurementCreate(' + value + ', unknown, _)'
+    },
+    {
+      name: "diastolic",
+      label: "Diastolic Blood Pressure (mmHg):",
+      query: value => 'health:bloodPressureDiastolicMeasurementCreate(' + value + ', unknown, _)'
+    },
+    {
+      name: "pulse",
+      label: "Pulse (bpm):",
+      query: value => 'health:pulseMeasurementCreate(' + value + ',unknown , _)'
+    }
+  ];
+
+  var formElement = '#health-form';
+
+  metrics.forEach (metric => {
+    $(formElement)
+      .append ($('<label></label>')
+        .attr ('for', metric.name)
+        .text (metric.label))
+      .append ($('<input></input>')
+        .attr ('name', metric.name)
+        .attr ('type', 'text')
+        .attr ('value', ''));
+  });
+
+  $(formElement)
+    .append ($('<button></button>')
+      .attr ('id', 'practice-send')
+      .text ('Send')
+      .click (function () {
+         var query = metrics.reduce ((acc, metric) => {
+           var value = $('#health-form > input[name="' + metric.name + '"]').val ();
+           if (value != '') {
+             acc.push (metric.query (value));
+           }
+           return acc;
+         }, []);
+
+         if (0 < query.length) {
+           var url = 'https://arf.larrylee.tech:5000/run?command=' + query.join (', ') + '.';
+           alert (url);
+           $.get (url,
+             function (content) {
+               alert ('success: "' + content + '"');
+             }, 'text').fail (function () {
+               alert ('failed');
+             });
+         }
+       }));
+</script>
+<div class='section-content'>
+  <div id='health-form' class="form"></div>
+  <div class="accordion_block">
+    <div class="accordion_item_block">
+      <div class="accordion_item_number">1</div>
+      <div class="accordion_item_title">Details</div>
+      <div class="accordion_item_body">
+        <p><strong>Target Weight Range:</strong> 175 - 180 <small>(lbs)</small></p>
+        <hr/>
+        <p><strong>Weight History (CSV):</strong> <a href="https://arf.larrylee.tech:5000/weight">weight.csv</a></p>
+        <hr/>
+        <p><strong>Weight History</strong></p>
+        <hr/>
+        <br/>
+        <div class='quote_block'>
+          <div class='graph_points_block'>
+            <div class='data_file_name'>https://arf.larrylee.tech:5000/weight</div>
+            <div class='container_id'>weight_plot</div>
+            <div class='x_field_name'>Time</div>
+            <div class='y_field_name'>Weight</div>
+            <div class='x_axis_label'>Date</div>
+            <div class='y_axis_label'>Weight</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

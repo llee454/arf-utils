@@ -28,16 +28,12 @@
         <path>pages/nutrition.html</path>
         <searchable>false</searchable>
       </template>
-      <page>
+      <template>
         <name>health</name>
         <title><![CDATA[Health]]></title>
-        <body><![CDATA[
-          <div class="section-content">
-            <div class='main_record_health_block'></div>
-          </div>
-        ]]></body>
+        <path>pages/health.html</path>
         <searchable>false</searchable>
-      </page>
+      </template>
       <page>
         <name>practice</name>
         <title><![CDATA[Practice]]></title>

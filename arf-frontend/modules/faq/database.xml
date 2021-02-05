@@ -10,6 +10,15 @@
     </body>
   </entry>
   <entry>
+    <id>biscuit</id>
+    <title>Biscuit</title>
+    <keywords>biscuit</keywords>
+    <url></url>
+    <body>
+      <p>357 KCal/4"</p>
+    </body>
+  </entry>
+  <entry>
     <id>coffee</id>
     <title>Coffee</title>
     <keywords>coffee</keywords>
@@ -52,6 +61,15 @@
     <url></url>
     <body>
       <p>470 KCal/Cup</p>
+    </body>
+  </entry>
+  <entry>
+    <id>kheer</id>
+    <title>Kheer</title>
+    <keywords>kheer rice pudding</keywords>
+    <url></url>
+    <body>
+      <p>500 KCal/Cup</p>
     </body>
   </entry>
   <entry>
