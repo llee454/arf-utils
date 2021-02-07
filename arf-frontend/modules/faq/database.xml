@@ -19,6 +19,15 @@
     </body>
   </entry>
   <entry>
+    <id>bread</id>
+    <title>Slice of Bread</title>
+    <keywords>bread</keywords>
+    <url></url>
+    <body>
+      <p>70 KCal/slice</p>
+    </body>
+  </entry>
+  <entry>
     <id>coffee</id>
     <title>Coffee</title>
     <keywords>coffee</keywords>
