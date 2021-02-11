@@ -42,7 +42,7 @@ subjectCreate(Name, ID) :-
 */
 sessionCreate(SubjectID, Timestamp, Unit, Duration, DurationPrec, ID) :-
   base:entity(ActorID, "me"), !,
-  base:activityCreate(Timestamp, ActorID, Unit, Duration, DurationPrec, ID),
+  base:activityCreate(ActorID, Timestamp, Unit, Duration, DurationPrec, ID),
   assert_session(ID, SubjectID).
 
 sessionCreate(SubjectID, Unit, Duration, DurationPrec, ID) :-
