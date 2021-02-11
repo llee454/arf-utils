@@ -199,6 +199,16 @@ attributesDelete(IDs) :-
   maplist(attributeDelete, IDs).
 
 /*
+  Accepts two arguments: +ActorID and +Timestamp; creates a entry
+  recording an action performed by the actor referenced by +ActorID at
+  the time represented by +Timestamp; and returns the entry ID as
+  -EventID.
+*/
+actionCreate(ActorID, Timestamp, EventID) :-
+  eventCreate(Timestamp, EventID),
+  assert_action(EventID, ActorID).
+
+/*
   Accepts two arguments: +ActorID and +EventID, and creates an
   event with the given ID and attributes the action to the actor.
 */
@@ -263,6 +273,24 @@ durationDelete(ID) :-
   attributeDelete(ID),
   retract_duration(ID),
   measurementDelete(ID).
+
+/*
+  Accepts five arguments:
+
+    * +ActorID, an entry ID that references the person who performed
+      the action and reported it
+    * +Timestamp, a timestamp recording when the activity occured
+    * +Unit, the unit of time used to measure the duration
+    * +Duration, the duration of the activity
+    * and +DurationPrec, the precision of the duration measurement
+
+  creates an entry recording an activity; and returns the entry's ID.
+*/
+activityCreate(ActorID, Timestamp, Unit, Duration, DurationPrec, ID) :-
+  base:entity(ActorID, "me"), !,
+  actionCreate(ActorID, Timestamp, ID),
+  assert_activity(ID),
+  durationCreate(ActorID, ID, Unit, Duration, DurationPrec, _).
 
 activityCreate(ActorID, Unit, Duration, DurationPrec, ID) :-
   base:entity(ActorID, "me"), !,
