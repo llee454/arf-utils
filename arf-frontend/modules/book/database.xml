@@ -23,6 +23,12 @@
     ]]></body>
     <content>
       <template>
+        <name>values</name>
+        <title><![CDATA[Values]]></title>
+        <path>pages/values.html</path>
+        <searchable>false</searchable>
+      </template>
+      <template>
         <name>nutrition</name>
         <title><![CDATA[Nutrition]]></title>
         <path>pages/nutrition.html</path>

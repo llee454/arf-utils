@@ -1,0 +1,14 @@
+digraph values {
+  domains -> { wellbeing social material }
+  wellbeing -> { mental physical }
+  mental -> { happiness engagement meaningfulness "self esteem" "anxiety disorder" understanding }
+  happiness -> { leisure diversity "gratitude" }
+  leisure -> { projects activities }
+  meaningfulness -> { work projects }
+  "self esteem" -> { achievement abilities qualities "social status" }
+  achievement -> { work projects }
+  qualities -> { disciplined rational pragmatic compassionate ethical }
+  social -> { family "long-term friends" "romantic partner" friends colleagues community }
+  material -> { security housing transportation food amenities }
+  understanding -> { knowledge expertise }
+}
