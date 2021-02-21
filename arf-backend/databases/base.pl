@@ -14186,3 +14186,7 @@ assert(entry('508bddfc-73f2-11eb-a368-0a29365a243a',0,1613877013.5555649)).
 assert(event('508bddfc-73f2-11eb-a368-0a29365a243a',1613877013.5555804)).
 assert(action('508bddfc-73f2-11eb-a368-0a29365a243a','8dc42ff6-b16c-11ea-8741-0a29365a243a')).
 assert(measurement('508bddfc-73f2-11eb-a368-0a29365a243a','508bdbcc-73f2-11eb-88df-0a29365a243a',min,30,5)).
+assert(entry('a3f3eba4-7403-11eb-b792-0a29365a243a',0,1613884454.9327986)).
+assert(event('a3f3eba4-7403-11eb-b792-0a29365a243a',1613884454.9329453)).
+assert(action('a3f3eba4-7403-11eb-b792-0a29365a243a','8dc42ff6-b16c-11ea-8741-0a29365a243a')).
+assert(measurement('a3f3eba4-7403-11eb-b792-0a29365a243a','8eed2d4c-b16c-11ea-bb70-0a29365a243a',lbs,181.6,0.2)).
