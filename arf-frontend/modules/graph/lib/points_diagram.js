@@ -19,7 +19,7 @@ pointsDiagram = function (
     .append ("g")
     .attr ("transform", "translate(" + margin.left + "," + margin.top + ")");
   
-  d3.csv (dataFileName, function (data) {
+  d3.csv (dataFileName).then (function (data) {
     var parseDate = d3.timeParse("%Y-%m-%d %I:%M:%S");
 
     var points = data

@@ -1,3 +1,251 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <database>
+  <collection>
+    <id>meals</id>
+    <entries>
+      <entry>
+        <id>breakfast-sandwhich</id>
+        <title>Croissant Egg and Cheese Sandwich</title>
+        <keywords>croissant egg cheese sandwich breakfast</keywords>
+        <url></url>
+        <body>
+          <p>490 KCal</p>
+        </body>
+      </entry>
+      <entry>
+        <id>biscuit</id>
+        <title>Biscuit</title>
+        <keywords>biscuit</keywords>
+        <url></url>
+        <body>
+          <p>357 KCal/4"</p>
+        </body>
+      </entry>
+      <entry>
+        <id>bread</id>
+        <title>Slice of Bread</title>
+        <keywords>bread</keywords>
+        <url></url>
+        <body>
+          <p>70 KCal/slice</p>
+        </body>
+      </entry>
+      <entry>
+        <id>coffee</id>
+        <title>Coffee</title>
+        <keywords>coffee</keywords>
+        <url></url>
+        <body>
+          <p>1 KCal/Cup</p>
+        </body>
+      </entry>
+      <entry>
+        <id>omelette</id>
+        <title>Omelette</title>
+        <keywords>omelette eggs</keywords>
+        <url></url>
+        <body>
+          <p>210 KCal - 3 eggs</p>
+        </body>
+      </entry>
+      <entry>
+        <id>egg</id>
+        <title>Egg</title>
+        <keywords>egg eggs</keywords>
+        <url></url>
+        <body>
+          <p>90 KCal</p>
+        </body>
+      </entry>
+      <entry>
+        <id>french-toast</id>
+        <title>French Toast</title>
+        <keywords>french toast</keywords>
+        <url></url>
+        <body>
+          <p>149 KCal/Slice</p>
+        </body>
+      </entry>
+      <entry>
+        <id>hashbrowns</id>
+        <title>Hash Browns</title>
+        <keywords>hash browns potatoes</keywords>
+        <url></url>
+        <body>
+          <p>470 KCal/Cup</p>
+        </body>
+      </entry>
+      <entry>
+        <id>kheer</id>
+        <title>Kheer</title>
+        <keywords>kheer rice pudding</keywords>
+        <url></url>
+        <body>
+          <p>500 KCal/Cup</p>
+        </body>
+      </entry>
+      <entry>
+        <id>grits</id>
+        <title>Grits</title>
+        <keywords>grits</keywords>
+        <url></url>
+        <body>
+          <p>143 KCal/Cup</p>
+        </body>
+      </entry>
+      <entry>
+        <id>fish-salmon</id>
+        <title>Salmon</title>
+        <keywords>salmon fish</keywords>
+        <url></url>
+        <body>
+          <p>33 KCal/Oz (132 Kcal/Qtr. Lb)</p>
+        </body>
+      </entry>
+      <entry>
+        <id>quinoa</id>
+        <title>Quinoa</title>
+        <keywords>quinoa</keywords>
+        <url></url>
+        <body>
+          <p>222 KCal/Cup</p>
+        </body>
+      </entry>
+      <entry>
+        <id>pancake</id>
+        <title>Pancake</title>
+        <keywords>pancake cake</keywords>
+        <url></url>
+        <body>
+          <p>70 KCal/each</p>
+        </body>
+      </entry>
+      <entry>
+        <id>peanut</id>
+        <title>Peanut</title>
+        <keywords>peanut nut nuts</keywords>
+        <url></url>
+        <body>
+          <p>1,280 KCal/Cup</p>
+        </body>
+      </entry>
+      <entry>
+        <id>bagel-cream-cheese</id>
+        <title>Cream Cheese Bagel</title>
+        <keywords>bagel cream cheese</keywords>
+        <url></url>
+        <body>
+          <p>400 KCal/each</p>
+        </body>
+      </entry>
+      <entry>
+        <id>rice</id>
+        <title>Boiled Rice</title>
+        <keywords>rice</keywords>
+        <url></url>
+        <body>
+          <p>216 KCal/Cup</p>
+        </body>
+      </entry>
+      <entry>
+        <id>carrots-steamed</id>
+        <title>Steamed Carrots</title>
+        <keywords>carrot</keywords>
+        <url></url>
+        <body>
+          <p>86 KCal/Cup</p>
+        </body>
+      </entry>
+      <entry>
+        <id>oatmeal</id>
+        <title>Plain Oatmeal</title>
+        <keywords>oatmeal oats</keywords>
+        <url></url>
+        <body>
+          <p>158 KCal/Cup</p>
+        </body>
+      </entry>
+      <entry>
+        <id>pear</id>
+        <title>Pear</title>
+        <keywords>pear</keywords>
+        <url></url>
+        <body>
+          <p>102 KCal/each</p>
+        </body>
+      </entry>
+      <entry>
+        <id>pasta</id>
+        <title>Pasta</title>
+        <keywords>pasta noodle</keywords>
+        <url></url>
+        <body>
+          <p>300 KCal/Cup</p>
+        </body>
+      </entry>
+      <entry>
+        <id>potato</id>
+        <title>Potato</title>
+        <keywords>potato</keywords>
+        <url></url>
+        <body>
+          <p>163 KCal/each</p>
+        </body>
+      </entry>
+      <entry>
+        <id>eggs-scrambled</id>
+        <title>Scrambled Eggs</title>
+        <keywords>egg eggs scrambled</keywords>
+        <url></url>
+        <body>
+          <p>365 KCal/Cup</p>
+        </body>
+      </entry>
+      <entry>
+        <id>fish-whiting</id>
+        <title>Whiting</title>
+        <keywords>fish whiting</keywords>
+        <url></url>
+        <body>
+          <p>100 KCal/fillet</p>
+        </body>
+      </entry>
+      <entry>
+        <id>vegetables-steamed</id>
+        <title>Steamed Vegetables</title>
+        <keywords>vegetables</keywords>
+        <url></url>
+        <body>
+          <p>50 KCal/Cup</p>
+        </body>
+      </entry>
+      <entry>
+        <id>apple</id>
+        <title>Medium Sized Apple</title>
+        <keywords></keywords>
+        <url></url>
+        <body>
+          <p>100 KCal/each</p>
+        </body>
+      </entry>
+      <entry>
+        <id>orange</id>
+        <title>Large Orange</title>
+        <keywords>orange</keywords>
+        <url></url>
+        <body>
+          <p>90 KCal/each</p>
+        </body>
+      </entry>
+      <entry>
+        <id>walnuts</id>
+        <title>Walnuts</title>
+        <keywords>walnuts nuts</keywords>
+        <url></url>
+        <body>
+          <p>523 KCal/Cup</p>
+        </body>
+      </entry>
+    </entries>
+  </collection>
 </database>

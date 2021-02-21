@@ -30,7 +30,7 @@ MODULE_LOAD_HANDLERS.add (
         'graph_venn_block': graph_venn_block,
         'graph_sankey_block': graph_sankey_block,
         'graph_whiskers_block': graph_whiskers_block,
-        'graph_points_block': points_block,
+        'graph_points_block': graph_points_block,
         'graph_map_block': graph_map_block
       });
 
@@ -213,6 +213,8 @@ function graph_points_block (context, done, expand) {
       context.element.replaceWith (element)
 
       pointsDiagram (
+        blockArguments.data_file_name,
+        blockArguments.container_id,
         blockArguments.x_field_name,
         blockArguments.y_field_name,
         blockArguments.x_axis_label,
