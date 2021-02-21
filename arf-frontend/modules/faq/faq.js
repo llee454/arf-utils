@@ -17,10 +17,12 @@ MODULE_LOAD_HANDLERS.add (
       function (error, database) {
         if (error) { return done (error); }
 
-        // II. register a search source that returns the FAQ answers.
-        search_registerSource ('faq', function (setId, done) {
-          done (null, database);
-        });
+        database.forEach (function (collection) {
+          // II. register a search source that returns the FAQ answers.
+          search_registerSource (collection.id, function (setId, done) {
+            done (null, collection.entries);
+          });
+        })
 
         done (null);
     });
@@ -61,11 +63,27 @@ function faq_loadDatabase (databaseURL, done) {
 */
 function faq_parseDatabase (databaseElement) {
   var database = [];
-  $('database > entry', databaseElement).each (
-    function (i, entryElement) {
-      database.push (faq_parseEntry (entryElement));
+  $('database > collection', databaseElement).each (
+    function (i, collectionElement) {
+      database.push (faq_parseCollection (collectionElement));
   });
   return database;
+}
+
+/*
+  Accepts one argument: collectionElement, a JQuery XML Element that represents
+  a collection of FAQ answers; and returns the faq_Collection represented by
+  collectionElement.
+*/
+function faq_parseCollection (collectionElement) {
+  var entries = [];
+  $('collection > entries > entry', collectionElement).each (
+    function (i, entryElement) {
+      entries.push (faq_parseEntry (entryElement));
+  });
+  return new faq_Collection (
+    $('collection > id', collectionElement).text (),
+    entries);
 }
 
 /*
@@ -80,6 +98,19 @@ function faq_parseEntry (entryElement) {
     $('> url', entryElement).text (),
     $('> body', entryElement).text ());
 }
+
+/*
+  Accepts two arguments:
+
+  * id, a FAQ ID string
+  * entries, an array of faq_Entry values
+*/
+function faq_Collection (id, entries) {
+  this.id      = id;
+  this.entries = entries;
+}
+
+faq_Collection.prototype = Object.create (faq_Collection.prototype);
 
 /*
   Accepts five arguments:

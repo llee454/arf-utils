@@ -1026,7 +1026,7 @@ search_Interface.prototype.getResultsElement = function (done, expand) {
     function (error, resultElements) {
       var resultsElement = $('<ol></ol>')
         .addClass ('search_results')
-        .attr ('style', 'counter-reset: ' + self.id + ' ' + self.start)
+        .attr ('style', 'counter-reset: search_interface ' + self.start)
         .append (resultElements && resultElements.length > 0 ?
             resultElements :
             $('<div class="search_no_results_block"></div>')
@@ -1036,7 +1036,7 @@ search_Interface.prototype.getResultsElement = function (done, expand) {
         function (done) {
           resultsElement
             .empty ()
-            .attr ('style', 'counter-reset: ' + self.id + ' ' + self.start)
+            .attr ('style', 'counter-reset: search_interface ' + self.start)
             .append ($('<div></div>').addClass ('search_loading'));
 
           self.getResultElements (

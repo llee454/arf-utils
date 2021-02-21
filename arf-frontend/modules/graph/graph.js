@@ -6,16 +6,18 @@
 MODULE_LOAD_HANDLERS.add (
   function (done) {
     loadScripts ([
-//      'https://d3js.org/d3.v6.min.js',
-      'https://d3js.org/d3.v4.js',
+      'https://d3js.org/d3.v6.min.js',
       'https://d3js.org/d3-scale-chromatic.v1.min.js',
+      'https://d3js.org/d3-fetch.v2.min.js',
+      'https://d3js.org/d3-geo-projection.v2.min.js', // remove?
       'modules/graph/lib/scalable_marimekko.js',
       'modules/graph/lib/sankey.js',
       'modules/graph/lib/sankey_diagram.js',
       'modules/graph/lib/network.js',
       'modules/graph/lib/venn.js/venn.js',
       'modules/graph/lib/whiskers_diagram.js',
-      'modules/graph/lib/points_diagram.js'
+      'modules/graph/lib/points_diagram.js',
+      'modules/graph/lib/map_diagram.js'
     ],
     function (error) {
       if (error) return done (error)
@@ -26,9 +28,10 @@ MODULE_LOAD_HANDLERS.add (
         'graph_scalable_marimekko_block': graph_scalable_marimekko_block,
         'graph_network_block': graph_network_block,
         'graph_venn_block': graph_venn_block,
-        'graph_sankey_block': sankey_block,
-        'graph_whiskers_block': whiskers_block,
-        'graph_points_block': points_block
+        'graph_sankey_block': graph_sankey_block,
+        'graph_whiskers_block': graph_whiskers_block,
+        'graph_points_block': points_block,
+        'graph_map_block': graph_map_block
       });
 
       done (null)
@@ -140,7 +143,7 @@ function graph_venn_block (context, done, expand) {
   })
 }
 
-function sankey_block (context, done, expand) {
+function graph_sankey_block (context, done, expand) {
   getBlockArguments ([
       {'name': 'data_file_name',  'text': true, 'required': true},
       {'name': 'container_id',    'text': true, 'required': true},
@@ -165,7 +168,7 @@ function sankey_block (context, done, expand) {
   })
 }
 
-function whiskers_block (context, done, expand) {
+function graph_whiskers_block (context, done, expand) {
   getBlockArguments ([
       {'name': 'data_file_name',  'text': true, 'required': true},
       {'name': 'container_id',    'text': true, 'required': true},
@@ -190,7 +193,7 @@ function whiskers_block (context, done, expand) {
   })
 }
 
-function points_block (context, done, expand) {
+function graph_points_block (context, done, expand) {
   getBlockArguments ([
       {'name': 'data_file_name',  'text': true, 'required': true},
       {'name': 'container_id',    'text': true, 'required': true},
@@ -210,14 +213,55 @@ function points_block (context, done, expand) {
       context.element.replaceWith (element)
 
       pointsDiagram (
-        blockArguments.data_file_name,
-        blockArguments.container_id,
         blockArguments.x_field_name,
         blockArguments.y_field_name,
         blockArguments.x_axis_label,
         blockArguments.y_axis_label,
         blockArguments.height,
         blockArguments.width
+      );
+      done (null, null)
+  })
+}
+
+function graph_map_block (context, done, expand) {
+  getBlockArguments ([
+      {'name': 'data_file_name',       'text': true, 'required': true},
+      {'name': 'map_file_name',        'text': true, 'required': true},
+      {'name': 'container_id',         'text': true, 'required': true},
+      {'name': 'csv_id_field_name',    'text': true, 'required': true},
+      {'name': 'csv_value_field_name', 'text': true, 'required': true},
+      {'name': 'absolute_range',       'text': true, 'required': false},
+      {'name': 'log_scale',            'text': true, 'required': false},
+      {'name': 'tooltip_region_label', 'text': true, 'required': false},
+      {'name': 'tooltip_data_label',   'text': true, 'required': false},
+      {'name': 'tooltip_data_prefix',  'text': true, 'required': false},
+      {'name': 'tooltip_data_suffix',  'text': true, 'required': false},
+      {'name': 'min_color',            'text': true, 'required': false},
+      {'name': 'max_color',            'text': true, 'required': false},
+    ],
+    context.element,
+    function (error, blockArguments) {
+      if (error) return done (error)
+
+      var element = $('<div></div>').attr ('id', blockArguments.container_id)
+
+      context.element.replaceWith (element)
+
+      mapDiagram (
+        blockArguments.data_file_name,
+        blockArguments.map_file_name,
+        blockArguments.container_id,
+        blockArguments.csv_id_field_name,
+        blockArguments.csv_value_field_name,
+        blockArguments.absolute_range != 'false',
+        blockArguments.log_scale != 'false',
+        blockArguments.tooltip_region_label,
+        blockArguments.tooltip_data_label,
+        blockArguments.tooltip_data_prefix,
+        blockArguments.tooltip_data_suffix,
+        blockArguments.min_color,
+        blockArguments.max_color,
       );
       done (null, null)
   })

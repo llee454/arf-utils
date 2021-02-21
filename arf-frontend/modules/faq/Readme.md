@@ -36,10 +36,12 @@ MODULE_LOAD_HANDLERS.add (
       function (error, database) {
         if (error) { return done (error); }
 
-        // II. register a search source that returns the FAQ answers.
-        search_registerSource ('faq', function (setId, done) {
-          done (null, database);
-        });
+        database.forEach (function (collection) {
+          // II. register a search source that returns the FAQ answers.
+          search_registerSource (collection.id, function (setId, done) {
+            done (null, collection.entries);
+          });
+        })
 
         done (null);
     });
@@ -87,11 +89,27 @@ function faq_loadDatabase (databaseURL, done) {
 */
 function faq_parseDatabase (databaseElement) {
   var database = [];
-  $('database > entry', databaseElement).each (
-    function (i, entryElement) {
-      database.push (faq_parseEntry (entryElement));
+  $('database > collection', databaseElement).each (
+    function (i, collectionElement) {
+      database.push (faq_parseCollection (collectionElement));
   });
   return database;
+}
+
+/*
+  Accepts one argument: collectionElement, a JQuery XML Element that represents
+  a collection of FAQ answers; and returns the faq_Collection represented by
+  collectionElement.
+*/
+function faq_parseCollection (collectionElement) {
+  var entries = [];
+  $('collection > entries > entry', collectionElement).each (
+    function (i, entryElement) {
+      entries.push (faq_parseEntry (entryElement));
+  });
+  return new faq_Collection (
+    $('collection > id', collectionElement).text (),
+    entries);
 }
 
 /*
@@ -108,12 +126,25 @@ function faq_parseEntry (entryElement) {
 }
 ```
 
-The FAQ Database and Entry Classes
+The FAQ Database, Collection, and Entry Classes
 ----------------------------------
 
-A FAQ Database is an array of faq_Entry objects. A faq_Entry object is an instance of the search_Entry class and represents the answer to a FAQ question. 
+A FAQ Database is an array of faq_Collection objects which themselves label collection of faq_Entry objects. A faq_Entry object is an instance of the search_Entry class and represents the answer to a FAQ question. 
 
 ```javascript
+/*
+  Accepts two arguments:
+
+  * id, a FAQ ID string
+  * entries, an array of faq_Entry values
+*/
+function faq_Collection (id, entries) {
+  this.id      = id;
+  this.entries = entries;
+}
+
+faq_Collection.prototype = Object.create (faq_Collection.prototype);
+
 /*
   Accepts five arguments:
 
@@ -174,13 +205,18 @@ FAQ databases are defined using XML documents. These documents list the question
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
 <database>
-  <entry>
-    <id>degree</id>
-    <title>Degree</title>
-    <keywords>degree college BA BS master phd</keywords>
-    <url></url>
-    <body><![CDATA[B.A., Goucher College, 2008]]></body>
-  </entry>
+  <collection>
+    <id>faq</id>
+    <entries>
+      <entry>
+        <id>fact</id>
+        <title>Example Fact</title>
+        <keywords>example fact</keywords>
+        <url></url>
+        <body><![CDATA[This is an example fact]]></body>
+      </entry>
+    </entries>
+  </collection>
 </database>
 ```
 
@@ -196,10 +232,18 @@ FAQ database documents must conform to the following XML schema. The schema can 
   <xs:element name="database">
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="entry" type="entryType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="collection" type="collectionType" minOccurs="0" maxOccurs="unbounded" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+
+  <!-- Defines the Collection type. -->
+  <xs:complexType name="collectionType">
+    <xs:sequence>
+      <xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="entry" type="entryType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
 
   <!-- Defines the Entry type. -->
   <xs:complexType name="entryType">
