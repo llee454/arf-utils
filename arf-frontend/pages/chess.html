@@ -4,8 +4,10 @@
     <p>When a piece moves:</p>
     <li>What does the piece immediately attack?</li>
     <li>What squares does the piece attack that are attacked by other pieces (coordination)</li>
-    <li>By moving the piece what other pieces can now move/attack (discovered attack, development)</li>
     <li>Where can the piece move next and what will it attack from each possible subsequent square?</li>
+    <li>By moving the piece what other pieces can now move/attack (discovered attack, development)</li>
+    <li>Is this piece aligned with another piece?</li>
+    <small>i.e. if another piece moves will this piece attack anything?</small>
   </ol>
   <h2>Quick Reference</h2>
   <div class="accordion_block">
@@ -14,18 +16,19 @@
       <div class="accordion_item_title">Defensive Options</div>
       <div class="accordion_item_body">
         <ol>
-          <li>Mate</li>
-          <li>Capture the attacker</li>
-          <li>Capture a piece of greater value</li>
-          <li>Attack a piece of greater value</li>
+          <li><small>Mate</small></li>
+          <li><small>Capture the attacker</small></li>
+          <li><small>Capture a piece of greater value</small></li>
+          <hr/>
+          <li><strong>Attack a piece of greater value</strong></li>
           <li><small>Blunder: can they block and counter attack your attacker? (simultaneous attack)</small></li>
-          <li>Pin/Skewer the attacker</li>
-          <li>Defend the attacked piece</li>
+          <li><strong>Pin/Skewer the attacker</strong></li>
+          <li><strong>Defend the attacked piece</strong></li>
           <li><small>Blunder: is the attacked piece a defender? (undercut)</small></li>
           <li><small>Blunder: is the defender already committed? (draw away)</small></li>
-          <li>Move the attacked piece</li>
-          <li>Interpose a piece</li>
-          <li>Compensation</li>
+          <li><strong>Move the attacked piece</strong></li>
+          <li><strong>Interpose a piece</strong></li>
+          <li><strong>Compensation</strong></li>
         </ol>
       </div>
     </div>
@@ -34,12 +37,14 @@
       <div class="accordion_item_title">Attack Options</div>
       <div class="accordion_item_body">
         <ol>
+          <strong>Immediate (First Degree)</strong>
           <li>Mate</li>
           <li>Capture</li>
           <li>Skewer</li>
           <li>Discovered attack while attacking a piece of greater value or undefended</li>
           <li>Attack a pinned piece</li>
           <li>Attack a trapped piece</li>
+          <strong>Second Degree</strong>
           <li>Check</li>
           <li>Pin a defender</li>
           <li>Fork</li>
@@ -56,11 +61,13 @@
           <li>Attack an undefended piece</li>
           <li>Overload<br/><small>attack 2 pieces protected by 1 defender</small></li>
           <li>Attack a piece of greater value</li>
+          <li>Align<br/><small>threaten discovered attack</small></li>
+          <strong>Third Degree</strong>
           <li>Draw to<br/><small>capture a piece that draws a defender to create a weakness, eg: double pawns, open file</small></li>
           <li>Pile on attack</li>
-          <li>Align<br/><small>threaten discovered attack</small></li>
           <li>Exchange a less for a more active piece</li>
           <li>Attack</li> 
+          <strong>Higher Degree (Constraining)</strong>
           <li>Cover valued square</li>
           <li>Manuever<br/><small>Move toward outposts, open diagnals, open rank and files.</small></li>
         </ol>
@@ -68,6 +75,52 @@
     </div>
     <div class="accordion_item_block">
       <div class="accordion_item_number">2</div>
+      <div class="accordion_item_title">Strategic Options</div>
+      <div class="accordion_item_body">
+        <strong>Middle Game Mate</strong>
+        <ol>
+          <li>late opening</li>
+          <li>minor piece mate</li>
+          <li>undefended pieces near king, requires blunders by Black</li>
+          <li>examples: Scholars Mate</li>
+        </ol>
+        <strong>Center Break-through Against an Un-castled King</strong>
+        <ol>
+          <li>When: early to middle middle game</li>
+          <li>Who: pawns supported by minor and heavy pieces</li>
+          <li>Requirements: one side must have failed to have castled their king and possibly compromised the pawns that would normally have protected the castled king. The attacking side must generally have a pawn advantage in the center.</li>
+          <li>Description: the attacking side will advance their pawns with the intention of removing the pawns that screen the king in the center and creating open files for the rooks to support a subsequent attack by minor pieces.</li>
+          <li>Examples:
+        </ol>
+        <strong>Minor Piece Mate Against a Castled King</strong>
+        <ol>
+          <li>When: Middle to late middle game</li>
+          <li>Who: minor piece attack</li>
+          <li>Requirements: one side must fail to develop their pieces so that their minor pieces cannot protect any of the key squares surrounding their king, while the attacking side has concentrated 3-4 minor pieces along with a queen and/or a rook against a castled king. These games generally feature piece sacrifices to strip the king of pawn protection followed up by mate.</li>
+          <li>Examples: Most games in combinations collections.</li>
+        </ol>
+        <small>Note: the Late Middle Game generally marks the point beyond which a mate by minor piece attack is not longer feasible. At this point the strategic objectives shift to one of the following templates.</small>
+        <strong>Pawn Attack Against a King Castled to the Opposite Side</strong>
+        <ol>
+          <li>When: late middle game</li>
+          <li>Who: pawns supported by minor and heavy pieces</li>
+          <li>Requirements: both sides must have castled to opposite sides.</li>
+          <li>Description: games in which both sides have castled to opposite sides are generally first-come first-serve. Both sides should seek to advance their pawns against their opponent's king. These pawns should be used to break up the pawn protection in front of the king and expose it to attack by minor and heavy pieces.</li>
+          <li>Examples:</li>         
+        </ol>
+        <strong>Passed Pawn on the Flanks</strong>
+        <ol>
+          <li>When: late middle game</li>
+          <li>Who: minor pieces and pawns</li>
+          <li>Requirements: advanced pawns on the flank, generally closed position in the center and flank, minor pieces available to exchange with pawns to recapture or advance.</li>
+          <li>Description: with the center locked and kings castled, pawns may be advanced on the flanks with the intention of undermining the base of the center pawn structures. Frequently these pawn advances can be turned into passed pawns.</li>
+        </ol>
+        <strong>Center Passed Pawns</strong>
+        <strong>Trade Down into an Advantageous Endgame</strong>
+      </div>
+    </div>
+    <div class="accordion_item_block">
+      <div class="accordion_item_number">3</div>
       <div class="accordion_item_title">Goals</div>
       <div class="accordion_item_body">
         <strong>Opening</strong>
