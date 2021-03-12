@@ -1,13 +1,28 @@
 <div id="chess-checklist">
-  <h2>Threat Scanning Checklist</h2>
+  <h2>Decision Checklist</h2>
+  <strong>Threat Scan Checklist</strong>
   <ol>
-    <p>When a piece moves:</p>
-    <li>What does the piece immediately attack?</li>
+    <li>Who are they attacking?</li>
     <li>What squares does the piece attack that are attacked by other pieces (coordination)</li>
     <li>Where can the piece move next and what will it attack from each possible subsequent square?</li>
     <li>By moving the piece what other pieces can now move/attack (discovered attack, development)</li>
     <li>Is this piece aligned with another piece?</li>
     <small>i.e. if another piece moves will this piece attack anything?</small>
+  </ol>
+  <strong>Attack Option Checklist</strong>
+  <ol>
+    <li>Where can I move?</li> <!-- check every possible move you can make with your pieces -->
+    <li>For each move:</li>
+    <ol>
+      <li>Who can I capture?</li>
+      <li>Who defends the piece I'm threatening to capture?</li>
+      <li>Who's left undefended if I capture? If they recapture?</li>
+      <li>Who's pinned?</li>
+    </ol>
+  </ol>
+  <strong>Blunder Check</strong>
+  <ol>
+    <li>Before I commit, can anyone capture my piece?</li>
   </ol>
   <h2>Quick Reference</h2>
   <div class="accordion_block">
