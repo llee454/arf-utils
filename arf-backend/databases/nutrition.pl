@@ -7694,3 +7694,10 @@ assert(servings('43816922-86af-11eb-a038-0a29365a243a',meat,0)).
 assert(servings('43816b0c-86af-11eb-b7fd-0a29365a243a',nuts,0)).
 assert(servings('43816cec-86af-11eb-979b-0a29365a243a',sugar,3)).
 assert(servings('43816ed6-86af-11eb-999f-0a29365a243a',fat,1)).
+assert(meal('f62cc9d6-86af-11eb-92e9-0a29365a243a')).
+assert(calories('f62cd41c-86af-11eb-9644-0a29365a243a',800)).
+assert(meal('11098604-86b0-11eb-90f2-0a29365a243a')).
+assert(calories('11098a28-86b0-11eb-93b1-0a29365a243a',1000)).
+assert(meal('2928c9c0-86b0-11eb-9ef0-0a29365a243a')).
+assert(calories('2928cdbc-86b0-11eb-81f2-0a29365a243a',50)).
+assert(servings('2928d014-86b0-11eb-b9f4-0a29365a243a',sugar,2)).
