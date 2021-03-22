@@ -7797,8 +7797,11 @@ assert(servings('a8ab801c-89c0-11eb-aae5-0a29365a243a',meat,0)).
 assert(servings('a8ab829c-89c0-11eb-9d3a-0a29365a243a',nuts,1)).
 assert(servings('a8ab84c2-89c0-11eb-9943-0a29365a243a',sugar,1)).
 assert(servings('a8ab86c0-89c0-11eb-ab2b-0a29365a243a',fat,0)).
-assert(meal('7171fa88-8b17-11eb-ac46-0a29365a243a')).
-assert(calories('71720294-8b17-11eb-82fd-0a29365a243a',1000)).
-assert(servings('7172055a-8b17-11eb-8b1a-0a29365a243a',grain,5)).
-assert(servings('71720762-8b17-11eb-aaf5-0a29365a243a',fat,4)).
-assert(servings('71720942-8b17-11eb-840f-0a29365a243a',dairy,3)).
+assert(meal('8d326eec-8b17-11eb-bae2-0a29365a243a')).
+assert(calories('8d3278e2-8b17-11eb-97c3-0a29365a243a',1000)).
+assert(servings('8d327bda-8b17-11eb-a380-0a29365a243a',grain,5)).
+assert(servings('8d327e50-8b17-11eb-862a-0a29365a243a',fat,4)).
+assert(servings('8d328076-8b17-11eb-9775-0a29365a243a',dairy,3)).
+assert(meal('3a293e6e-8b18-11eb-abe1-0a29365a243a')).
+assert(calories('3a2946ac-8b18-11eb-a40e-0a29365a243a',400)).
+assert(servings('3a294922-8b18-11eb-977f-0a29365a243a',sugar,3)).
