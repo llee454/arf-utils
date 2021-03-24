@@ -9,6 +9,7 @@ MODULE_LOAD_HANDLERS.add (
 
   block_HANDLERS.addHandlers ({
     'main_get_block': main_getBlock,
+    'main_get_recurring_block': main_getRecurringBlock,
     'main_prolog_query_block': main_prologQueryBlock,
     'main_record_practice_session_block': main_recordPracticeSessionBlock,
     'main_record_health_block': main_recordHealthBlock,
@@ -56,6 +57,26 @@ function main_getBlock (context, done) {
     function (error, content) {
       context.element.html (content);
     });
+  done (null);
+}
+
+function main_getRecurringBlock (context, done) {
+  var backendURL = 'https://arf.larrylee.tech:5000/';
+  var url = backendURL + $(context.element).data ('url');
+  var interval = $(context.element).data ('interval') || 1000;
+
+  var fetching = false;
+  function update () {
+    if (!fetching) {
+      fetching = true;
+      getPlainText (url,
+        function (error, content) {
+          context.element.html (content);
+          fetching = false;
+        });
+    }
+  }
+  setInterval (update, interval);
   done (null);
 }
 
