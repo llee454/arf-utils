@@ -563,7 +563,7 @@ function getTemplate (url, done) {
 
   * url, a URL string
   * done, a function that accepts two arguments:
-    an Error object and a JQuery HTML Element
+    an Error object and text
 
   getPlainText loads the plain text file
   referenced by url and passes it to done.
@@ -580,6 +580,32 @@ function getPlainText (url, done) {
     ).fail (function () {
       var error = new Error ('[core][getPlainText] Error: an error occured while trying to load a template from "' + url + '".');
       strictError (error);
+      done (error);
+    });
+}
+
+/*
+  getPlainTextSafe accepts three arguments:
+
+  * url, a URL string
+  * done, a function that accepts two arguments:
+    an Error object and text
+
+  getPlainTextSafe loads the plain text file
+  referenced by url and passes it to done.
+
+  If an error occurs, getPlainTextSafe does not
+  throw a strict error
+*/
+function getPlainTextSafe (url, done) {
+  $.get (url,
+    function (content) {
+      done (null, content);
+    },
+    'text'
+    ).fail (function () {
+      var error = new Error ('[core][getPlainText] Error: an error occured while trying to load a template from "' + url + '".');
+      console.log (error.message);
       done (error);
     });
 }

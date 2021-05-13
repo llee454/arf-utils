@@ -52,8 +52,8 @@ function main_displayBackToTop () {
 
 function main_getBlock (context, done) {
   var backendURL = 'https://arf.larrylee.tech:5000/';
-  getPlainText (
-    backendURL + $(context.element).data ('url'),
+  var url = backendURL + $(context.element).data ('url');
+  getPlainText (url,
     function (error, content) {
       context.element.html (content);
     });
@@ -69,7 +69,7 @@ function main_getRecurringBlock (context, done) {
   function update () {
     if (!fetching) {
       fetching = true;
-      getPlainText (url,
+      getPlainTextSafe (url,
         function (error, content) {
           context.element.html (content);
           fetching = false;
