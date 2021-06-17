@@ -31,6 +31,9 @@
     </div>
   </div>
   <div id='nutrition-form' class='form'>
+    <label for='date'>Timestamp:</label>
+    <input id='prolog-meal-date-input' name='date' type='text'/>
+    <div><small>This field stores a Unix timestamp. See: <a href="https://www.epochconverter.com">epochconverter.com</a></small></div>
     <label for='calories'>Calories:</label>
     <input id='prolog-meal-calories-input' name='calories' value='0' type='text'/>
     <label for='grain'>Grain servings:</label>
@@ -49,6 +52,10 @@
     <input id='prolog-meal-sugar-input' name='sugar' value='0' type='text'/>
     <label for='fat'>Fats servings:</label>
     <input id='prolog-meal-fat-input' name='fat' value='0' type='text'/>
+    <hr/>
+    <label for='protein'>Protein servings:</label>
+    <input id='prolog-meal-protein-input' name='protein' value='0' type='text'/>
+    <div><small>8g of protein from a whey protein supplement.</small></div>
     <button id='prolog-meal-send'>Send</button>
   </div>
   <div class="accordion_block">
@@ -109,6 +116,8 @@
   </div>
 </div>
 <script type="text/javascript">
+  $('#prolog-meal-date-input').val (Date.now ());
+
   $('#prolog-meal-send')
     .click (function () {
       var servingsString = [
@@ -117,6 +126,7 @@
           'prolog-meal-fruit-input',
           'prolog-meal-dairy-input',
           'prolog-meal-meat-input',
+          'prolog-meal-protein-input',
           'prolog-meal-nuts-input',
           'prolog-meal-sugar-input',
           'prolog-meal-fat-input'
@@ -126,7 +136,7 @@
           return 'serving(' + label + ', ' + value + ')';
         }).join (', ');
 
-      var url = 'https://arf.larrylee.tech:5000/run?command=nutrition:mealCreate(' + $('#prolog-meal-calories-input').val () + ', [' + servingsString + '], _).';
+      var url = 'https://arf.larrylee.tech:5000/run?command=nutrition:mealCreate(' + $('#prolog-meal-date-input').val () + '.0, ' + $('#prolog-meal-calories-input').val () + ', [' + servingsString + '], _).';
       alert (url);
       $.get (url,
         function (content) {
