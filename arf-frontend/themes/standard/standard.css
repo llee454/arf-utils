@@ -2676,7 +2676,7 @@ table.padded-list tbody tr td {
 input, button {
   width: 100%; }
 
-.form input[type="text"] {
+.form input[type="text"], .form input[type="number"] {
   margin-bottom: 20px; }
 .form select, .form table {
   margin-bottom: 20px;
@@ -2726,3 +2726,5 @@ input[type="checkbox"] {
 #chess-checklist input[type="checkbox"] {
   width: 50px;
   height: 30px; }
+
+/*# sourceMappingURL=standard.css.map */

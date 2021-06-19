@@ -1,17 +1,17 @@
 <div id='nutrition-content' class='section-content'>
   <p>
     <strong>Calories eaten today: </strong>
-    <span class='main_get_recurring_block' data-url='run?command=nutrition:caloriesToday(Calories), write(Calories), nl.'>loading...</span>
+    <span class='main_get_recurring_block' data-url='q=nutrition/meals-today'>loading...</span>
     <small> (KCal)</small>
   </p>
   <p>
     <strong>Accumulated Calories: </strong>
-    <span class='main_get_recurring_block' data-url='remaining_cals'>loading...</span>
+    <span class='main_get_recurring_block' data-url='q=nutrition/remaining-cals'>loading...</span>
     <small> (KCal)</small>
   </p>
   <p>
     <strong>Hours Till Next Meal: </strong>
-    <span class='main_get_recurring_block' data-url='hours_till_next_meal'>loading...</span>
+    <span class='main_get_recurring_block' data-url='q=nutrition/hours-till-next-meal'>loading...</span>
     <small> (Hrs)</small>
   </p>
   <div class="accordion_block">
@@ -36,6 +36,8 @@
     <div><small>This field stores a Unix timestamp. See: <a href="https://www.epochconverter.com">epochconverter.com</a></small></div>
     <label for='calories'>Calories:</label>
     <input id='prolog-meal-calories-input' name='calories' value='0' type='text'/>
+    <label for='descr'>Description:</label>
+    <input id='prolog-meal-descr-input' name='descr' required type='text'/>
     <label for='grain'>Grain servings:</label>
     <input id='prolog-meal-grain-input' name='grain' value='0' type='text'/>
     <label for='vegetables'>Vegetable servings:</label>
@@ -64,9 +66,7 @@
       <div class="accordion_item_title">Details</div>
       <div class="accordion_item_body">
         <p>
-          <strong>Recommended Meal Size: </strong>
-          <span class='main_get_block' data-url='meal_size'>Loading...</span>
-          <small> (KCal)</small>
+          <strong>Recommended Meal Size: </strong>500<small> (KCal)</small>
         </p>
         <hr/>
         <h2>DASH Diet Guidelines</h2>
@@ -116,11 +116,11 @@
   </div>
 </div>
 <script type="text/javascript">
-  $('#prolog-meal-date-input').val (Date.now ());
+  $('#prolog-meal-date-input').val (Date.now () / 1000);
 
   $('#prolog-meal-send')
     .click (function () {
-      var servingsString = [
+      var servings = [
           'prolog-meal-grain-input',
           'prolog-meal-vegetables-input',
           'prolog-meal-fruit-input',
@@ -133,12 +133,24 @@
         ].map (function (id) {
           var value = $('#' + id).val ();
           var label = $('#' + id).attr ('name');
-          return 'serving(' + label + ', ' + value + ')';
-        }).join (', ');
+          return {
+            'type': label,
+            'amount': parseFloat (value)
+          };
+        });
 
-      var url = 'https://arf.larrylee.tech:5000/run?command=nutrition:mealCreate(' + $('#prolog-meal-date-input').val () + '.0, ' + $('#prolog-meal-calories-input').val () + ', [' + servingsString + '], _).';
+      var meal = {
+        "key": null,
+        "created": parseFloat ($('#prolog-meal-date-input').val ()),
+        "timestamp": parseFloat ($('#prolog-meal-date-input').val ()),
+        "description": $('#prolog-meal-descr-input').val (),
+        "calories": parseFloat ($('#prolog-meal-calories-input').val ()),
+        "servings": servings
+      }
+
+      var url = 'https://arf.larrylee.tech/cgi-bin/arf.cgi?q=nutrition/create';
       alert (url);
-      $.get (url,
+      $.post (url, JSON.stringify (meal),
         function (content) {
           alert ('success: "' + content + '"');
         }, 'text').fail (function () {

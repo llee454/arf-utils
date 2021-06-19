@@ -3,32 +3,26 @@
     {
       name: "weight",
       label: "Weight (lb):",
-      query: value => 'health:weightMeasurementCreate(' + value + ', 0.2, _)'
     },
     {
       name: "waist",
       label: "Waist Circumference (in) (+/- 1/4in):",
-      query: value => 'health:waistCircumferenceMeasurementCreate(' + value + ', 0.25, _)'
     },
     {
-      name: "bicep",
+      name: "biceps",
       label: "Bicep Circumference (in) (+/- 1/8in):",
-      query: value => 'health:bicepCircumferenceMeasurementCreate(' + value + ', 0.125, _)'
     },
     {
       name: "systolic",
       label: "Systolic Blood Pressure (mmHg):",
-      query: value => 'health:bloodPressureSystolicMeasurementCreate(' + value + ', unknown, _)'
     },
     {
       name: "diastolic",
       label: "Diastolic Blood Pressure (mmHg):",
-      query: value => 'health:bloodPressureDiastolicMeasurementCreate(' + value + ', unknown, _)'
     },
     {
       name: "pulse",
       label: "Pulse (bpm):",
-      query: value => 'health:pulseMeasurementCreate(' + value + ',unknown , _)'
     }
   ];
 
@@ -42,31 +36,49 @@
       .append ($('<input></input>')
         .attr ('name', metric.name)
         .attr ('type', 'text')
-        .attr ('value', ''));
+        .attr ('value', '0'));
   });
+
+  function sendReq (url, req) {
+    alert (url);
+    $.post (url, req,
+      function (content) {
+        alert ('success: "' + content + '"');
+      }, 'text').fail (function () {
+        alert ('failed');
+      });
+  }
 
   $(formElement)
     .append ($('<button></button>')
       .attr ('id', 'practice-send')
       .text ('Send')
       .click (function () {
-         var query = metrics.reduce ((acc, metric) => {
-           var value = $('#health-form > input[name="' + metric.name + '"]').val ();
-           if (value != '') {
-             acc.push (metric.query (value));
-           }
-           return acc;
-         }, []);
+         var url = 'https://arf.larrylee.tech/cgi-bin/arf.cgi?q=health/'
 
-         if (0 < query.length) {
-           var url = 'https://arf.larrylee.tech:5000/run?command=' + query.join (', ') + '.';
-           alert (url);
-           $.get (url,
-             function (content) {
-               alert ('success: "' + content + '"');
-             }, 'text').fail (function () {
-               alert ('failed');
-             });
+         var timestamp = Date.now () / 1000
+
+         var bpReq = {
+           "measurementTimestamp": timestamp,
+           "systolic":  parseFloat ($("#health-form > input[name='systolic']").val ()),
+           "diastolic": parseFloat ($("#health-form > input[name='diastolic']").val ()),
+           "pulse":     parseFloat ($("#health-form > input[name='pulse']").val ())
+         }
+
+         var bmReq = {
+           "measurementTimestamp": timestamp,
+           "waist":   parseFloat ($("#health-form > input[name='waist']").val ()),
+           "biceps":  parseFloat ($("#health-form > input[name='biceps']").val ()),
+           "weight":  parseFloat ($("#health-form > input[name='weight']").val ())
+         }
+
+         alert ('breakpoint a: ' + JSON.stringify (bmReq))
+         if (bpReq.systolic + bpReq.diastolic + bpReq.pulse > 0) {
+           sendReq (url + 'record-blood-pressure', JSON.stringify (bpReq))
+         }
+         if (bmReq.waist + bmReq.biceps + bmReq.weight > 0) {
+           alert ('breakpoint b')
+           sendReq (url + 'record-body-measurements', JSON.stringify (bmReq))
          }
        }));
 </script>

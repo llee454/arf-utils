@@ -127,7 +127,7 @@ input, button {
   width: 100%;
 }
 .form {
-  input[type="text"] {
+  input[type="text"], input[type="number"] {
     margin-bottom: 20px;
   }
   select, table {

@@ -51,7 +51,7 @@ function main_displayBackToTop () {
 }
 
 function main_getBlock (context, done) {
-  var backendURL = 'https://arf.larrylee.tech:5000/';
+  var backendURL = 'https://arf.larrylee.tech/cgi-bin/arf.cgi?';
   var url = backendURL + $(context.element).data ('url');
   getPlainText (url,
     function (error, content) {
@@ -61,7 +61,7 @@ function main_getBlock (context, done) {
 }
 
 function main_getRecurringBlock (context, done) {
-  var backendURL = 'https://arf.larrylee.tech:5000/';
+  var backendURL = 'https://arf.larrylee.tech/cgi-bin/arf.cgi?';
   var url = backendURL + $(context.element).data ('url');
   var interval = $(context.element).data ('interval') || 1000;
 
