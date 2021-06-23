@@ -1,9 +1,13 @@
 <div id="chess-checklist">
-  <h2>Decision Checklist <small>(version 3.0.0)</small></h2>
+  <h2>Decision Checklist <small>(version 3.1.0)</small></h2>
   <strong>Threat Scan</strong>
   <!-- Run through whenever the other player moves to determine what has changed -->
   <ol style="font-size: 11px">
-    <li>Who are they atk'ing, X? <!-- hung --> Is X dfnd'ed, (by) Y? <!-- undercut X --> Is Y under atk? pinned? <!-- overload Y --> Is Y dfnd'ing another piece that is under atk? Is X dfnd'ing other pieces, Zs? <!-- undercut Zs --> Are Zs under atk? Can they atk more than one Zs next move?</li>
+    <li>Who are they atk'ing, X?</li>
+    <ol style="font-size: 11px">
+      <li><!-- hung -->Is X dfnd'ed, (by) Y? <!-- undercut X --> Is Y under atk? pinned? <!-- overload Y --> Is Y dfnd'ing another piece that is under atk?</li>
+      <li>Is X dfnd'ing other pieces, Zs? <!-- undercut Zs --> Are Zs under atk? Can they atk more than one Zs next move?</li>
+    </ol>
     <li>Where can the piece move next and what will it atk from each possible subsequent square? Pending forks? Pins? Skewers?</li>
     <li><!-- discovered --> Is this piece aligned with another piece?</li>
     <li>What squares does the piece atk that are atk'ed by other pieces (coordination)</li>
@@ -15,6 +19,11 @@
     <li><!-- hung -->Is my piece, X, under atk? <!-- hung -->Is X undefended? <!-- undercut -->Is the defender, Y, under atk? pinned? <!-- overload Y -->Is Y dfnd'ing another piece, Z, that is under atk?</li>
     <li>Was X dfnd'ing a piece, Y? <!-- abandonment -->Is Y under atk? Can Y be atk'ed next move? By a piece of lesser value?<!-- simultaneous atk -->Can they simult. atk. Y and another piece next move?</li>
     <li>Can they atk X next move? <!-- fork -->Can they simult. atk another piece next move? <!-- pin -->Can they pin X next move? <!-- attack pinned piece --> Can they atk X afterwards?</li>
+    <li>What squares, S, was X Cov'ing? Which squares can they move onto?</li>
+    <ol style="font-size: 11px">
+      <li>Who will they atk, Y, from these squares?</li>
+      <li>For Kts, Ps, and Ks: where can they move next?</li>
+    </ol>
     <li><!-- entrapment -->Is X surrounded? Can they entrap X?</li>
     <li>Can they check? Who must move to block, X? <!-- attack pinned piece -->Can X be atk'ed? Was X dfnd'ing another piece? What lines of atk are opened by moving X? Forks? Simult. atks? What squares are now undefended?</li>
   </ol>
