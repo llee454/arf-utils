@@ -37,3 +37,5 @@ assert(session('caff42be-7b67-11eb-a46e-0a29365a243a','80b4e93e-d789-11ea-a7d8-0
 assert(session('3506f8b8-7c36-11eb-8d7e-0a29365a243a','80b4e93e-d789-11ea-a7d8-0a29365a243a')).
 assert(session('293bdcf0-7de5-11eb-9766-0a29365a243a','80b4e93e-d789-11ea-a7d8-0a29365a243a')).
 assert(session('4f22df6a-beed-11eb-90ff-0a29365a243a','0c9ebcba-b235-11ea-b786-0a29365a243a')).
+assert(session('1ebd6ea0-d372-11eb-a423-0a29365a243a','0c9ebcba-b235-11ea-b786-0a29365a243a')).
+assert(session('c4c69194-d47d-11eb-a66a-0a29365a243a','0c9ebcba-b235-11ea-b786-0a29365a243a')).
