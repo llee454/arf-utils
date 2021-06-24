@@ -68,7 +68,7 @@ mapDiagram = function (
           if (!d.unknown) {
             tooltip
               .classed ('visible', true)
-              .html ('<div><strong>' + tooltipRegionLabel + '</strong>: ' + d.id + '<br/><strong>' + tooltipDataLabel + '</strong>: ' + tooltipDataPrefix + d.value + tooltipDataSuffix + '</div>');
+              .html ('<div><strong>' + tooltipRegionLabel + '</strong>: ' + d.id + '<br/><strong>' + tooltipDataLabel + '</strong>: ' + tooltipDataPrefix + new Intl.NumberFormat().format(d.value) + tooltipDataSuffix + '</div>');
           }
         })
         .on ('mousemove', function (e) {
@@ -79,6 +79,10 @@ mapDiagram = function (
         .on ('mouseout', function (d) {
           tooltip
             .classed ('visible', null)
+          
+          setTimeout (function () {
+            tooltip.classed ('visible') || tooltip.html ('<div></div>')
+          }, 2000)
         })
     })
   })
